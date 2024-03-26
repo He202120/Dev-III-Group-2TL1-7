@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import { Button } from '../components/ui/button';
+import { Button } from '@components/button';
 import {
   Card,
   CardContent,
@@ -9,9 +9,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
+} from '@components/card';
+import { Input } from '@components/input';
+import { Label } from '@components/label';
 
 const Login = () => {
   const [email, setEmail] = useState('');

@@ -2,30 +2,22 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 //Pages
-import Layout from './pages/Layout.jsx'
-import Login from './pages/Login.jsx'
-import Register from './pages/Register.jsx'
-import NoPage from './pages/NoPage.jsx'
+import Header from '@components/Header/Header.jsx'
+import Footer from '@components/Footer/Footer.jsx'
+import { Outlet } from 'react-router-dom'
 
+//css global
 import './app.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-//Fonction pour renvoyer la bonne page (React-rooter)
+//Fonction pour renvoyer la bonne page (React-rooter), * est la path par défaut si il n'y a pas de page ou qu'il y a un problème
 function App(){
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}/>
-          <Route path="connexion" element={<Login />}/>
-          <Route path="register" element={<Register />}/>
-          <Route path="*" element={<NoPage />}/>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
   );
 }
 
-export default App
-
-//Appliquer les changements dans la page
-const page = ReactDOM.createRoot(document.getElementById('root'));
-page.render(<App />);
+export default App;

@@ -5,8 +5,19 @@ import { defineConfig } from "vite"
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
+    alias: [
+      {
+        find: '@',
+        replacement: path.resolve(__dirname, "./src")
+      },
+      {
+        find: '@components',
+        replacement: path.resolve(__dirname, "./src/components/ui")
+      },
+      {
+        find: '@pages',
+        replacement: path.resolve(__dirname, "./src/pages")
+      }
+    ]
   },
 })
