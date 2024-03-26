@@ -54,7 +54,7 @@ function Header(){
                     </nav>
                 </div>
                 <div>
-                    <a style={styles_login} href="/auth/login">Se connecter</a>
+                    <a style={styles_login} href="/login">Se connecter</a>
                 </div>
             </div>
         </header>

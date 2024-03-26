@@ -1,45 +1,56 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
-//Import de routage
-import { createBrowserRouter, RouterProvider} from 'react-router-dom'
-
-//Pages
 import App from './app.jsx'
-import Accueil from '@pages/Accueil.jsx'
-import Login from '@pages/Login.jsx'
-import Register from '@pages/Register.jsx'
-import NoPage from '@pages/NoPage.jsx'
 
-//Router
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+const pages = import.meta.glob("./pages/**/*.jsx", { eager: true })
+console.log(pages)
+
+const routes = []
+// On va boucler pour recuperer tout nos fichiers pour créer nos routes.
+for (const path of Object.keys(pages)){
+  const fileName = path.match(/\.\/pages\/(.*)\.jsx$/)?.[1]
+  //On va filtrer les fichier qui ne respecte pas le format
+  if(!fileName){
+    continue
+  }
+  console.log("__________")
+  console.log(fileName)
+
+  // On va normaliser nos routes
+  const normalizedPath = fileName.includes("$")
+    ? fileName.replace('$', ':')
+    : fileName.replace(/\/Accueil/, "")
+    
+  console.log(normalizedPath)
+
+  routes.push({
+    path: fileName === "Accueil" ? "/" : `${normalizedPath.toLowerCase()}`,
+    Element: pages[path].default,
+    loader: pages[path]?.loader,
+    action: pages[path]?.action,
+    ErrorBoundary: pages[path]?.ErrorBoundary
+  })
+}
+console.log(routes)
+
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <App />,
-    children: [
-      {
-        path: '/',
-        element: <Accueil />
-      },
-      {
-        path: '/auth/login',
-        element: <Login />
-      },
-      {
-        path: '/auth/register',
-        element: <Register />
-      },
-      {
-        path: '/*',
-        element: <NoPage />
-      }
-    ]
+    path: "/",
+    element: <App/>,
+    children:
+      routes.map(({Element, ErrorBoundary, ...rest}) => ({
+        ...rest,
+        element: <Element/>,
+        ...(ErrorBoundary && { errorElement: <ErrorBoundary/> })
+      }))
   }
 ])
 
-//Appliquer les changements dans la page
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}/>
-  </React.StrictMode>
+  </React.StrictMode>,
 )
