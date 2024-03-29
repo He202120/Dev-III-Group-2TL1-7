@@ -45,11 +45,11 @@ function Header(){
                 <div>
                     <nav>
                         <ul>
-                            <li style={styles_nav}><a href="#">Accueil</a></li>
+                            <li style={styles_nav}><a href="/">Accueil</a></li>
                             <li style={styles_nav}><a href="#">Agenda</a></li>
                             <li style={styles_nav}><a href="#">Magasin</a></li>
                             <li style={styles_nav}><a href="#">Actualités</a></li>
-                            <li style={styles_nav}><a href="#">Gestionnaire</a></li>
+                            <li style={styles_nav}><a href="/gestionnaire">Gestionnaire</a></li>
                         </ul>
                     </nav>
                 </div>
