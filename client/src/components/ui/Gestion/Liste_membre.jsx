@@ -10,6 +10,9 @@ function Liste_membre(){
             .then(res => setData(res.data))
             .catch(err => console.log(err));
     }, []);
+
+    const members_list = list.map(person => <tr><td>{person.nom}</td><td>{person.prenom}</td><td>{person.poste}</td><td>{person.emplacement}</td><td>{person.status}</td></tr>);
+
     
     return(
         <table class="listeStyle">
@@ -23,6 +26,7 @@ function Liste_membre(){
                 </tr>
             </thead>
             <tbody>
+                {members_list}
             </tbody>
         
         </ table>
