@@ -5,6 +5,7 @@ require("./db");
 //Constantes de path pour les routes
 const UsersRouter = require("./routes/userRoute");
 const Login = require("./routes/login");
+const Gestionnaire = require("./routes/gestionnaire.route")
 const cors = require("cors");
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended: false}));
 
 app.use(UsersRouter);
 app.use(Login);
+app.use(Gestionnaire);
 
 //Port d'écoute
 app.listen(8000, () => {
