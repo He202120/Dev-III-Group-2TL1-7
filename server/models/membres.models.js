@@ -12,16 +12,58 @@ const membreSchema = new Schema({
             required: true
         },
 
-        poste: {
-            type: String,
-            enum: ["Gardien", "Défenseur central","Défenseur latéral","Milieu offensif","Milieu défensif","Avant-centre","Ailier","Non-attribué"],
-            default: "Non-attribué"
+        naissance: {
+            type: Date,
+            required: true
         },
 
-        emplacement: {
+        email: {
             type: String,
-            enum: ["Gauche","Droite","Centré"],
-            default: "Centré"
+            required: true,
+            unique: true
+        },
+
+        telephone: {
+            type: String,
+            required: true,
+            unique: true
+        },
+
+        adresse: {
+            type: String,
+            required: true
+        },
+
+        postal: {
+            type: Number,
+            required: true
+        },
+
+        postejeu: {
+            type: String,
+            enum: ["Ailier","Attaquant de pointe","Milieu offensif","Milieu défensif","Défenseur centrale","Latérale","Gardien but"],
+            default: "None"
+        },
+
+        vma: {
+            type: String,
+            required: true
+        },
+
+        fitness: {
+            type: String,
+            required: true
+        },
+
+        saut: {
+            type: Number,
+            required: true
+        },
+
+        poste: {
+            type: String,
+            enum: ["Staff médical","Entraineurs","Staff administratif","Joueurs","Non-attribué"],
+            default: "Non-attribué"
         },
 
         status: {
@@ -35,6 +77,6 @@ const membreSchema = new Schema({
     }
 );
 
-const Membres = mongoose.model('Membres', membreSchema);
+const Membres = mongoose.model('joueurs', membreSchema);
 
 module.exports = Membres;

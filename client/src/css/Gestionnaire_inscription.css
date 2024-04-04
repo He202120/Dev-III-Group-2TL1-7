@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#VMAdata {
+    margin-bottom: 10px;
+}
+
+#VMAdata input, button {
+    padding: 10px;
+    width: 90px;
+}

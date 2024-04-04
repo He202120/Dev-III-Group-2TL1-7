@@ -5,7 +5,6 @@ import App from './app.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const pages = import.meta.glob("./pages/**/*.jsx", { eager: true })
-console.log(pages)
 
 const routes = []
 // On va boucler pour recuperer tout nos fichiers pour créer nos routes.
@@ -15,15 +14,11 @@ for (const path of Object.keys(pages)){
   if(!fileName){
     continue
   }
-  console.log("__________")
-  console.log(fileName)
 
   // On va normaliser nos routes
   const normalizedPath = fileName.includes("$")
     ? fileName.replace('$', ':')
     : fileName.replace(/\/Accueil/, "")
-    
-  console.log(normalizedPath)
 
   routes.push({
     path: fileName === "Accueil" ? "/" : `${normalizedPath.toLowerCase()}`,
@@ -33,7 +28,6 @@ for (const path of Object.keys(pages)){
     ErrorBoundary: pages[path]?.ErrorBoundary
   })
 }
-console.log(routes)
 
 const router = createBrowserRouter([
   {

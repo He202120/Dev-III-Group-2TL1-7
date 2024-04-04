@@ -1,0 +1,34 @@
+table {
+    background: #bbf7d7;
+    border-collapse: collapse;
+    width: 30%;
+    height: 350px;
+    overflow: scroll;
+}
+
+caption, th, td{
+    padding: 1rem;
+}
+
+caption, th {
+    text-align: left;
+}
+
+.centrale {
+    
+}
+
+caption {
+    background: #008D42;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+th {
+    background: #03a951;
+}
+
+tr:nth-of-type(2n) {
+    background: #a4e5c3;
+}
