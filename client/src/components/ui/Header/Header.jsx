@@ -4,21 +4,24 @@ function Header(){
 
     const styles_nav = {
         display: "inline-block",
-        padding: "30px",
+        padding: "20px",
         margin: "20px",
         align: "center",
-        fontFamily: "Verdana, Arial, Helvetica, sans-serif",
-        fontSize: "1.1em"
+        fontFamily: "Georgia, serif",
+        fontSize: "1.4em",
+        backgroundColor: "#ebebeb",
+        borderRadius: "15px"
     }
     const styles_login = {
         padding: "20px",
         margin: "20px",
         align: "center",
-        fontFamily: "Verdana, Arial, Helvetica, sans-serif",
+        fontFamily: "Georgia, serif",
         fontSize: "1.4em",
         border: "2px solid black",
+        borderRadius: "15px",
         boxShadow: "3px 2px",
-        backgroundColor: "#CCFFDD"
+        backgroundColor: "rgb(0 141 66 / 57%)"
     }
     const style_logo = {
         width: "125px",
@@ -46,7 +49,7 @@ function Header(){
                     <nav>
                         <ul>
                             <li style={styles_nav}><a href="/">Accueil</a></li>
-                            <li style={styles_nav}><a href="#">Agenda</a></li>
+                            <li style={styles_nav}><a href="/Agenda">Agenda</a></li>
                             <li style={styles_nav}><a href="#">Magasin</a></li>
                             <li style={styles_nav}><a href="#">Actualités</a></li>
                             <li style={styles_nav}><a href="/gestionnaire">Gestionnaire</a></li>

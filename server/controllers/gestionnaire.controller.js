@@ -1,5 +1,7 @@
 //Variable lié à la table de models des membres
+
 const Membres = require("../models/membres.models");
+
 
 //Renvoie la liste des membres
 const getMembres = async (req, res) => {
