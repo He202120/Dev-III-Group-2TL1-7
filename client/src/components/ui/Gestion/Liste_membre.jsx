@@ -1,4 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+  } from "@/components/ui/table.jsx";
 
 //Axios est utilisé pour faire des requêtes à l'API
 import axios from 'axios';
@@ -26,28 +35,35 @@ function Liste_membre(){
         }
     });
 
-    const members_list = list.map(person => <tr><td>{person.nom}</td><td>{person.prenom}</td><td>{person.poste}</td><td>{person.status}</td><td><button>Infos</button></td></tr>);
+
+    const membre_list = list.map(person => <TableRow>
+        <TableCell className="font-medium">{person.poste}</TableCell>
+        <TableCell>{person.nom}</TableCell>
+        <TableCell>{person.prenom}</TableCell>
+        <TableCell className="text-right">{person.status}</TableCell>
+        </TableRow>);
 
     
     return(
-        <div className="wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Poste</th>
-                        <th>Status</th>
-                        <th>Profil</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {members_list}
-                </tbody>
-                <caption>
-                    Joueurs & staff
-                </caption>
-            </ table>
+        <div class="listesection1">
+            <div class="listeheader1">
+                <h2>Liste des membres officielles</h2>
+            </div>
+            <div class="listebody1">
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="w-[100px]">Poste</TableHead>
+                            <TableHead>Nom</TableHead>
+                            <TableHead>Prénom</TableHead>
+                            <TableHead className="text-right">Status</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {membre_list}
+                    </TableBody>
+                </Table>
+            </div>
         </div>
     );
 }

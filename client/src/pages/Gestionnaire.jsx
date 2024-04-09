@@ -6,9 +6,13 @@ import Liste_attente from '@components/Gestion/Liste_attente.jsx'
 import { useNavigate } from 'react-router-dom'
 
 //CSS
-import '@/css/Gestionnaire.css'
+import "./CSS(S)/Gestionnaire.css"
 
 function Gestionnaire(){
+
+    const redirect = () => {
+        document.location.href="/gestionnaire_inscription";
+    }
 
     const getInscription = () => {
         useNavigate("/gestionnaire_inscription", {replace : true});
@@ -18,7 +22,7 @@ function Gestionnaire(){
         <>
             <Liste_membre />
             <Liste_attente />
-            <a href="/gestionnaire_inscription">Inscription</a>
+            <button class="inscriptgestion" onClick={redirect}>Inscription</button>
         </>
     );
 }

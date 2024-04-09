@@ -35,7 +35,7 @@ const membreSchema = new Schema({
         },
 
         postal: {
-            type: Number,
+            type: String,
             required: true
         },
 
@@ -62,14 +62,14 @@ const membreSchema = new Schema({
 
         poste: {
             type: String,
-            enum: ["Staff médical","Entraineurs","Staff administratif","Joueurs","Non-attribué"],
+            enum: ["Staff médical","Entraineurs","Staff administratif","Joueur","Non-attribué"],
             default: "Non-attribué"
         },
 
         status: {
             type: String,
-            enum: ["Disponible","Indisponible","Blessé","Révision","En prêt"],
-            default: "Révision"
+            enum: ["Disponible","Indisponible","Blessé","Révision","En prêt","En attente"],
+            default: "En attente"
         },
     },
     {

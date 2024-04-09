@@ -11,12 +11,12 @@ function Joueur_form(){
     const [telephone, setTel] = useState("");
     const [adresse, setAdresse] = useState("");
     const [postal, setPostal] = useState(1000);
-    const [postejeu, setEmplacement] = useState("Non-attribué");
+    const [postejeu, setEmplacement] = useState("Ailier");
     const [vma, setVma] = useState("0");
     const [fitness, setFit] = useState("");
     const [saut, setSaut] = useState(0);
-    const [poste, setPoste] = useState("Ailier");
-    const [status, setStatus] = useState("Disponible");
+    const poste = "Joueur";
+    const status = "En attente";
 
 
     function handleVMA(){
@@ -42,7 +42,7 @@ function Joueur_form(){
             fitness,
             saut,
             poste,
-            status
+            status,
           });
         } catch (error) {
           console.log("Erreur au POST");
@@ -52,7 +52,7 @@ function Joueur_form(){
 
     return (
         <>
-            <h2>Formulaire</h2>
+            <h2>Formulaire pour joueur (Sans inscription)</h2>
             <form onSubmit={handleSubmit}>
                 <hr/>
                 <h3>Donnée personnelles</h3>

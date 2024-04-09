@@ -2,7 +2,7 @@ function Staff_form(){
     return (
         <>
             <form method="post" action="">
-                <h2>Formulaire pour joueur (Sans inscription)</h2>
+                <h2>Formulaire pour staff (Sans inscription)</h2>
                 <hr/>
                 <h3>Donnée personnelles</h3>
                 <fieldset className="name-field">

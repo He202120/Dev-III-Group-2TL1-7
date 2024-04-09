@@ -16,22 +16,24 @@ const setMembres = async (req, res, next) => {
 
     try {
         const membrepost = await Membres.create({
-            nom: req.nom,
-            prenom: req.prenom,
-            naissance: req.naissance,
-            email: req.email,
-            telephone: req.telephone,
-            adresse: req.adresse,
-            postal: req.postal,
-            postejeu: req.postejeu,
-            vma: req.vma,
-            fitness: req.fitness,
-            saut: req.saut,
-            poste: req.poste,
-            status: req.status
+            nom: req.body.nom,
+            prenom: req.body.prenom,
+            naissance: req.body.naissance,
+            email: req.body.email,
+            telephone: req.body.telephone,
+            adresse: req.body.adresse,
+            postal: req.body.postal,
+            postejeu: req.body.postejeu,
+            vma: req.body.vma,
+            fitness: req.body.fitness,
+            saut: req.body.saut,
+            poste: req.body.poste,
+            status: req.body.status
         });
-        res.status(201).json({nom: req.nom,
-            prenom: req.prenom,});
+        res.status(201).json({
+            _nom: membrepost.nom,
+            _prenom: membrepost.prenom
+        });
     } catch (error) {
         console.log("Une erreur est survenue.");
         res.status(500).json({message: error.message});
