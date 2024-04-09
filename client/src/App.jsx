@@ -16,15 +16,12 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <Router>
-        <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="auth" element={<Register />}/>
-                <Route path="login" element={<Login />}/>
-                <Route path="register" element={<Register />}/>
-        </Routes>
-    </Router>
-  )
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
 }
 
 export default Home
