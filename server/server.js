@@ -20,8 +20,6 @@ app.use(express.urlencoded({extended: false}));
 
 app.use(UsersRouter);
 app.use(Login);
-app.use(Gestionnaire);
-app.use(Agenda);
 
 //Port d'écoute
 app.listen(8000, () => {
