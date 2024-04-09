@@ -1,16 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { Router } from "react-router-dom"
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import ErrorPage from "./pages/ErrorPage";
 
-//Pages
-import Header from '@components/Header/Header.jsx'
-import Footer from '@components/Footer/Footer.jsx'
-import { Outlet } from 'react-router-dom'
 
-//css global
-import './app.css'
+function App() {
+  const [count, setCount] = useState(0)
 
-//Fonction pour renvoyer la bonne page (React-rooter), * est la path par défaut si il n'y a pas de page ou qu'il y a un problème
-function App(){
   return (
     <>
       <Header />
@@ -20,4 +24,13 @@ function App(){
   );
 }
 
-export default App;
+export default Home
+
+
+
+
+
+
+
+
+
