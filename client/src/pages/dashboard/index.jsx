@@ -1,11 +1,11 @@
 import React from 'react';
 
-const login = () => {
+const Index = () => {
     return (
         <div>
-            page de login
+            Dashboard index 
         </div>
     );
 };
 
-export default login;
+export default Index;
