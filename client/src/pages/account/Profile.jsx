@@ -17,6 +17,15 @@ export default function Component() {
   const decodedToken = jwtDecode(token);
   const userId = decodedToken.sub;
   const [userData, setUserData] = useState(null);
+  const [formValues, setFormValues] = useState({
+    firstName: '',
+    lastName: '',
+    oldPassword: '',
+    newPassword: '',
+    email: '',
+    phone: '',
+    bio: ''
+  });
 
   const config = {
     headers: {
@@ -29,7 +38,13 @@ export default function Component() {
       try {
         const response = await axios.get(`http://localhost:8000/users/${userId}`, config);
         setUserData(response.data);
-        //console.log(response.data)
+        setFormValues({
+          firstName: response.data.firstName || '',
+          lastName: response.data.lastName || '',
+          email: response.data.email || '',
+          phone: response.data.phone || '',
+          bio: response.data.bio || ''
+        });
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -37,7 +52,25 @@ export default function Component() {
 
     fetchData();
   }, [userId]);
-  
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.patch(`http://localhost:8000/users/${userId}`, formValues, config);
+      setUserData(response.data);
+      console.log('User data updated:', response.data);
+    } catch (error) {
+      console.error('Error updating user data:', error);
+    }
+  };
 
   return (
     <>
@@ -61,45 +94,45 @@ export default function Component() {
         </div>
       </div>
     <div className="mt-5 mb-5 mx-5">
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="flex space-x-2">
                 <div className="w-1/3 space-y-2">
                 <Label htmlFor="firstName">Prénom</Label>
-                <Input name="firstName" id="firstName" placeholder="Zinedine" defaultValue={userData?.firstName || ''}/>
+                <Input name="firstName" id="firstName" placeholder="Zinedine" value={formValues.firstName} onChange={handleChange} />
                 </div>
 
                 <div className="w-1/3 space-y-2">
                 <Label htmlFor="lastName">Nom</Label>
-                <Input name="lastName" id="lastName" placeholder="Zidane" defaultValue={userData?.lastName || ''}/>
+                <Input name="lastName" id="lastName" placeholder="Zidane" value={formValues.lastName} onChange={handleChange} />
                 </div>
             </div>
             <div className="flex space-x-2 mt-4">
                 <div className="w-1/3 space-y-2">
                 <Label htmlFor="oldPassword">Ancien mot de passe</Label>
-                <Input name="oldPassword" id="oldPassword" placeholder="*********" />
+                <Input type="password" name="oldPassword" id="oldPassword" placeholder="*********" value={formValues.oldPassword} onChange={handleChange} />
                 </div>
 
                 <div className="w-1/3 space-y-2">
                 <Label htmlFor="newPassword">Nouveau mot de passe</Label>
-                <Input name="newPassword" id="newPassword" placeholder="*********" />
+                <Input type="password" name="newPassword" id="newPassword" placeholder="*********" value={formValues.newPassword} onChange={handleChange} />
                 </div>
             </div>
             <div className="space-x-2 mt-4">
                 <div className="w-1/2 space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input name="email" id="email" placeholder="email@example.com" defaultValue={userData?.email || ''}/>
+                <Input name="email" id="email" placeholder="email@example.com" value={formValues.email} onChange={handleChange} />
                 </div>
             </div>
             <div className="space-x-2 mt-4">
                 <div className="w-1/2 space-y-2">
                     <Label htmlFor="phone">Numéro de téléphone</Label>
-                    <Input name="phone" id="phone" placeholder="+32 654 78 92" defaultValue={userData?.phone || ''}/>
+                    <Input name="phone" id="phone" placeholder="+32 654 78 92" value={formValues.phone} onChange={handleChange} />
                 </div>
             </div>
             <div className="space-x-2 mt-4">
                 <div className="w-1/2 space-y-2">
-                    <Label htmlFor="email">Présente-toi</Label>
-                    <Textarea name="email" id="email" placeholder="Poste(s), projet(s), ancien(s) club(s) ..." />
+                    <Label htmlFor="bio">Présente-toi</Label>
+                    <Textarea name="bio" id="bio" placeholder="Poste(s), projet(s), ancien(s) club(s) ..." value={formValues.bio} onChange={handleChange} />
                 </div>
             </div>
             <Button type="submit" variant="rfc" className="mt-10">Mettre à jour</Button>
@@ -151,99 +184,6 @@ function UsersIcon(props) {
     </svg>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
