@@ -2,18 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const evenementSchemat = new Schema({
-        date: {
+        date_start: {
             type: Date,
             required: true
         },
 
-        start: {
-            type: String,
-            required: true
-        },
-
-        end: {
-            type: String,
+        date_end: {
+            type: Date,
             required: true
         },
 

@@ -12,6 +12,15 @@ const getEvenement = async (req, res) => {
     }
 };
 
+const postEvent = async (req, res) => {
+
+    try {
+        const eventpost = await Evenement.create(req.body);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+};
 module.exports = {
-    getEvenement
+    getEvenement,
+    postEvent
 };

@@ -1,0 +1,86 @@
+.rbc-header{
+    color:white;
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    height: 36px    !important;
+    background: #008D42;
+}
+
+.rbc-allday-cell{
+    display: none;
+}
+
+.rbc-time-header-cell .rbc-today{
+    background-color: #008D42 !important;
+}
+
+.rbc-time-slot{
+    color: #008D42;
+    z-index: 1;
+}
+
+.rbc-time-slot:not(.rbc-today .rbc-time-slot){
+    background-color: #eff4f7;
+}
+
+.rbc-event,
+.rbc-background-event{
+    z-index: 2;
+    padding: 0px !important;
+    border: none !important;
+}
+
+.rbc-event-label{
+    display: none !important;
+}
+
+.rbc-event-container{
+    width: 100% !important;
+}
+
+.rbc-event-content {
+    background-color: #004c25;
+}
+
+/* Ajout de styles pour le formulaire */
+#formulaire {
+    margin-top: 20px; /* Espace entre le calendrier et le formulaire */
+    max-width: 400px; /* Réduire la largeur maximale du formulaire */
+    margin-left: auto; /* Centrer le formulaire horizontalement */
+    margin-right: auto; /* Centrer le formulaire horizontalement */
+}
+
+label {
+    display: inline-block;
+    width: 120px; /* Largeur du label */
+    text-align: right; /* Alignement du texte du label à droite */
+    margin-bottom: 10px; /* Espace entre chaque label-input */
+    margin-right: 10px; /* Augmenter la distance entre le label et l'input */
+}
+
+
+#formulaire input[type="datetime-local"],
+#formulaire input[type="text"],
+#formulaire input[type="submit"] {
+    display: inline-block;
+    margin-bottom: 10px; /* Espace entre chaque champ */
+    padding: 8px;
+    border: 1px solid #008D42;
+    border-radius: 4px;
+    width: calc(100% - 130px); /* Largeur du champ d'entrée (total - largeur du label) */
+    box-sizing: border-box; /* Inclure les bordures et le rembourrage dans la largeur */
+    vertical-align: middle; /* Alignement vertical avec les labels */
+}
+
+#formulaire input[type="submit"] {
+    margin-left: 130px; /* Ajouter une marge supérieure pour aligner avec les autres champs */
+    background-color: #008D42; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition pour l'animation */
+}
+
+#formulaire input[type="submit"]:hover {
+    background-color: #004c25; /* Couleur de fond du bouton au survol */
+}
