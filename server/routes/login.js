@@ -15,14 +15,21 @@ router.post("/login", async (req, res, next) => {
     if (!isPasswordValid) {
       return res.status(422).json({ email: "Identifiants incorrects" });
     }
-    const token = jwt.sign({ sub: user._id, role: user.role }, "strongSecret", {
-      expiresIn: "4h",
+    const token = jwt.sign({ sub: user._id, role: user.role }, process.env.JWTSECRET, {
+      expiresIn: "1h",
     });
-    res.json({ token });
+
+    // Configuration du cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true, 
+      sameSite: "strict"
+    });
+
+    res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: "Une erreur s'est produite lors de la connexion." });
   }
 });
-
 
 module.exports = router;
