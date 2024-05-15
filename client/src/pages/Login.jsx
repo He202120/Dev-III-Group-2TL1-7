@@ -35,7 +35,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/login", { email, password }, {
+      const response = await axios.post("https://rfc-wetteren-api.onrender.com/login", { email, password }, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -82,6 +82,7 @@ const Login = () => {
 }
 
 export default Login;
+
 
 
 

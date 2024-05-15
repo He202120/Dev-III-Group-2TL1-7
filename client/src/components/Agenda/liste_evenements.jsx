@@ -8,7 +8,7 @@ function Liste_evenement() {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/agenda")
+        axios.get("https://rfc-wetteren-api.onrender.com/agenda")
             .then(res => {
                 console.log("Données reçues de la base de données :", res.data); 
                 const eventsData = res.data.map(event => ({
@@ -37,5 +37,6 @@ function Liste_evenement() {
 }
 
 export default Liste_evenement;
+
 
 

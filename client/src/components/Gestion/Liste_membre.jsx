@@ -15,7 +15,7 @@ import axios from 'axios';
 function Liste_membre(){
     const [list, setData] = useState([]);
     useEffect(() => {
-            axios.get("http://localhost:8000/gestionnaire")
+            axios.get("https://rfc-wetteren-api.onrender.com/gestionnaire")
             .then(res => setData(res.data))
             .catch(err => console.log(err));
     }, []);
@@ -69,4 +69,5 @@ function Liste_membre(){
 }
 
 export default Liste_membre;
+
 

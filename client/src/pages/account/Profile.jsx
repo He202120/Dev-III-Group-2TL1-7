@@ -36,7 +36,7 @@ export default function Component() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/users/${userId}`, config);
+        const response = await axios.get(`https://rfc-wetteren-api.onrender.com/users/${userId}`, config);
         setUserData(response.data);
         setFormValues({
           firstName: response.data.firstName || '',
@@ -64,7 +64,7 @@ export default function Component() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.patch(`http://localhost:8000/users/${userId}`, formValues, config);
+      const response = await axios.patch(`https://rfc-wetteren-api.onrender.com/users/${userId}`, formValues, config);
       setUserData(response.data);
       console.log('User data updated:', response.data);
     } catch (error) {
@@ -184,6 +184,7 @@ function UsersIcon(props) {
     </svg>
   )
 }
+
 
 
 
