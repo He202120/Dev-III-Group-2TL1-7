@@ -19,7 +19,6 @@ router.post("/login", async (req, res, next) => {
       expiresIn: "1h",
     });
 
-    // Configuration du cookie
     res.cookie("token", token, {
       httpOnly: true,
       secure: true, 
