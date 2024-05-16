@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     return "hello vercel";
 });
 
-router.get('/users', checkAuth, isAdmin, async (req, res, next) => {
+router.get('/users', async (req, res, next) => {
   try {
     const users = await User.find();
     res.json(users);
