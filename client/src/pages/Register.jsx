@@ -77,7 +77,9 @@ const Register = () => {
         phone: "",
         password: "",
       });
+      console.log(response.data);
       navigate("/auth/login");
+      console.log(response.data);
     } catch (error) {
       setError("Le numéro de téléphone ou l'adresse mail est déjà utilisée.");
       return;
@@ -133,6 +135,9 @@ const Register = () => {
 };
 
 export default Register;
+
+
+
 
 
 

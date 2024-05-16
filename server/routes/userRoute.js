@@ -25,7 +25,7 @@ router.get('/users', checkAuth, isAdmin, async (req, res, next) => {
   }
 });
 
-router.get('/players', checkAuth, isAdmin, async (req, res, next) => {
+router.get('/players', async (req, res, next) => {
   try {
     const players = await Player.find();
     res.json(players);
@@ -106,18 +106,37 @@ router.get('/users/:id', checkAuth, async (req, res, next) => {
   }
 });
 
+const bcrypt = require('bcrypt');
+
 router.patch('/users/:id', async (req, res, next) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (user) {
-      res.json(user);
-    } else {
-      res.sendStatus(404);
+    const { oldPassword, newPassword, ...rest } = req.body;
+    let user = await User.findById(req.params.id);
+    
+    if (!user) {
+      return res.sendStatus(404);
     }
+
+    if (oldPassword && newPassword) {
+      const passwordMatch = await bcrypt.compare(oldPassword, user.password);
+      if (!passwordMatch) {
+        return res.status(422).json({ message: "L'ancien mot de passe est incorrect." });
+      }
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(newPassword, salt);
+      user.password = hashedPassword;
+    }
+
+    // Update user with other fields
+    user = await User.findByIdAndUpdate(req.params.id, rest, { new: true });
+
+    res.json(user);
   } catch (error) {
     res.status(422).json({ message: error.message });
   }
 });
+
 
 router.delete('/users/:id', checkAuth, isAdmin, async (req, res, next) => {
   try {
