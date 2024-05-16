@@ -19,12 +19,6 @@ router.post("/login", async (req, res, next) => {
       expiresIn: "1h",
     });
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: true, 
-      sameSite: "strict"
-    });
-
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: "Une erreur s'est produite lors de la connexion." });
