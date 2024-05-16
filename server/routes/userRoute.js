@@ -106,8 +106,6 @@ router.get('/users/:id', checkAuth, async (req, res, next) => {
   }
 });
 
-const bcrypt = require('bcrypt');
-
 router.patch('/users/:id', async (req, res, next) => {
   try {
     const { oldPassword, newPassword, ...rest } = req.body;
