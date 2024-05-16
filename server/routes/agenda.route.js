@@ -4,8 +4,9 @@ const express = require("express");
 const router = express.Router();
 
 //Controllers
-const {getEvenement} = require('../controllers/agenda.controller.js');
+const {getEvenement, postEvent} = require('../controllers/agenda.controller.js');
 
 router.get('/Agenda', getEvenement);
+router.post('/Agenda/add', postEvent)
 
 module.exports = router;
