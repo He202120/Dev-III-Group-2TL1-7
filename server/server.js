@@ -5,11 +5,6 @@ const Login = require("./routes/login");
 const cors = require("cors");
 
 const app = express();
-app.use(cors({
-  origin: ['https://rfc-wetteren.vercel.app'],
-  credentials: true
-}));
-
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://rfc-wetteren.vercel.app');
@@ -17,6 +12,12 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Bearer');
   next();
 });
+
+
+app.use(cors({
+  origin: ['https://rfc-wetteren.vercel.app'],
+  credentials: true
+}));
 
 app.use(express.json());
 

@@ -62,6 +62,12 @@ const Register = () => {
       return;
     }
 
+    const belgianPhoneNumberRegex = /^(?:\+?32|0)(?:\d{2,3})?\d{3}\d{2}\d{2}$/;
+    if (!belgianPhoneNumberRegex.test(phoneNumber)) {
+      setError("Le numéro de téléphone belge est invalide.");
+      return;
+    }
+
     try {
       const response = await axios.post("https://rfc-wetteren-api.onrender.com/users", formData);
       setFormData({
@@ -127,6 +133,7 @@ const Register = () => {
 };
 
 export default Register;
+
 
 
 

@@ -6,13 +6,17 @@ const checkAuth = require('../middlewares/checkAuth');
 const jwt = require("jsonwebtoken");
 const isAdmin = require('../middlewares/isAdmin');
 const router = new Router();
+const bodyParser = require('body-parser');
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/', async (req, res) => {
     res.json("Hello World");
     return "hello vercel";
 });
 
-router.get('/users', async (req, res, next) => {
+router.get('/users', checkAuth, isAdmin, async (req, res, next) => {
   try {
     const users = await User.find();
     res.json(users);
@@ -21,7 +25,7 @@ router.get('/users', async (req, res, next) => {
   }
 });
 
-router.get('/players', async (req, res, next) => {
+router.get('/players', checkAuth, isAdmin, async (req, res, next) => {
   try {
     const players = await Player.find();
     res.json(players);

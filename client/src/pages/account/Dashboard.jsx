@@ -7,6 +7,20 @@ import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@
 import NavBar from "@/components/NavBar"
 
 
+const [userData, setUserData] = useState({});
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`https://rfc-wetteren-api.onrender.com/users/${userId}`, config);
+      setUserData(response.data);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
+  fetchData();
+}, [userId]);
 
 
 export default function Component() {
@@ -36,11 +50,11 @@ export default function Component() {
           <div className="grid gap-4 md:grid-cols-2">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                <CardTitle className="text-sm font-medium">Nombre de matchs</CardTitle>
+                <CardTitle className="text-sm font-medium">Nombre de minutes jouées</CardTitle>
                 <ActivityIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">15</div>
+                <div className="text-2xl font-bold">{userData.minutesPlayed}</div>
               </CardContent>
             </Card>
             <Card>
@@ -49,7 +63,7 @@ export default function Component() {
                 <ActivityIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">5</div>
+                <div className="text-2xl font-bold">{userData.goals}</div>
               </CardContent>
             </Card>
             <Card>
@@ -58,7 +72,7 @@ export default function Component() {
                 <ActivityIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">2</div>
+                <div className="text-2xl font-bold">{userData.yellowCards}</div>
 
               </CardContent>
             </Card>
@@ -68,7 +82,7 @@ export default function Component() {
                 <ActivityIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">1</div>
+                <div className="text-2xl font-bold">{userData.redCards}</div>
               </CardContent>
             </Card>
           </div>
@@ -84,15 +98,6 @@ export default function Component() {
                     <TableHead className="text-left">Nombre de minutes</TableHead>
                   </TableRow>
                 </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">14/04/2024</TableCell>
-                    <TableCell>Genk</TableCell>
-                    <TableCell>Défenseur</TableCell>
-                    <TableCell className="text-left">4</TableCell>
-                    <TableCell className="text-left">90'</TableCell>
-                  </TableRow>
-                </TableBody>
               </Table>
             </Card>
           </div>
@@ -163,6 +168,15 @@ function UsersIcon(props) {
     </svg>
   )
 }
+
+
+
+
+
+
+
+
+
 
 
 
