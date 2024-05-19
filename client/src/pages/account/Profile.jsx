@@ -11,12 +11,19 @@ import axios from "axios"
 import Cookies from 'js-cookie';
 import {jwtDecode} from 'jwt-decode'; 
 import { useState, useEffect } from "react"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
 
 export default function Component() {
   const token = Cookies.get('token'); 
   const decodedToken = jwtDecode(token);
   const userId = decodedToken.sub;
   const [userData, setUserData] = useState(null);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [formValues, setFormValues] = useState({
     firstName: '',
     lastName: '',
@@ -36,7 +43,7 @@ export default function Component() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://rfc-wetteren-api.onrender.com/users/${userId}`, config);
+        const response = await axios.get(`http://localhost:8000/users/${userId}`, config);
         setUserData(response.data);
         setFormValues({
           firstName: response.data.firstName || '',
@@ -63,9 +70,23 @@ export default function Component() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const reEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    if (!reEmail.test(formValues.email)) {
+      setError("Veuillez entrer une adresse email valide.");
+      return;
+    }
+
+    const rePhone = /^\+\d{2}( ?\d{3})( ?\d{2})( ?\d{2})( ?\d{2})$/;
+    if (!rePhone.test(formValues.phone)) {
+      setError("Veuillez entrer un numéro de téléphone valide.");
+      return;
+    }
+
     try {
-      const response = await axios.patch(`https://rfc-wetteren-api.onrender.com/users/${userId}`, formValues, config);
+      const response = await axios.patch(`http://localhost:8000/users/${userId}`, formValues, config);
       setUserData(response.data);
+      setSuccess("Vos informations ont été mises à jour avec succès.");
       console.log('User data updated:', response.data);
     } catch (error) {
       console.error('Error updating user data:', error);
@@ -94,6 +115,20 @@ export default function Component() {
         </div>
       </div>
     <div className="mt-5 mb-5 mx-5">
+        {error && (
+          <Alert variant="destructive" className="w-[810px] mb-5">
+            <AlertTitle>Erreur</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
+        {success && (
+          <Alert variant="success" className="w-[810px] mb-5">
+            <AlertTitle>Succès</AlertTitle>
+            <AlertDescription>{success}</AlertDescription>
+          </Alert>
+        )}
+        
         <form onSubmit={handleSubmit}>
             <div className="flex space-x-2">
                 <div className="w-1/3 space-y-2">
@@ -184,7 +219,3 @@ function UsersIcon(props) {
     </svg>
   )
 }
-
-
-
-

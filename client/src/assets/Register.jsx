@@ -10,7 +10,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://rfc-wetteren-api.onrender.com/users", {
+      const response = await axios.post("http://localhost:8000/users", {
         name,
         email,
         password,
@@ -61,6 +61,7 @@ const Register = () => {
 };
 
 export default Register;
+
 
 
 

@@ -12,6 +12,13 @@ router.get('/', async (req, res) => {
     return "hello vercel";
 });
 
+router.get('/logout', (req, res) => {
+  res.clearCookie('JWT_TOKEN', { httpOnly: true, secure: true, sameSite: 'Strict' });
+  res.clearCookie('token');
+
+  res.redirect('/');
+});
+
 router.get('/users', async (req, res, next) => {
   try {
     const users = await User.find();

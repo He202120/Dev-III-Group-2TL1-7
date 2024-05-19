@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import {jwtDecode} from 'jwt-decode'; 
+import { jwtDecode } from 'jwt-decode'; 
 
 function IsAdmin({ children }) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const token = Cookies.get('token'); 
+    const token = Cookies.get('token');
     if (token) {
-      const decodedToken = jwtDecode(token);
-      if (decodedToken && decodedToken.role === 'admin') {
-        setIsAdmin(true);
+      try {
+        const decodedToken = jwtDecode(token);
+        if (decodedToken.role === 'admin') {
+          setIsAdmin(true);
+        }
+      } catch (error) {
+        console.error('Error decoding token:', error);
       }
     }
   }, []);
 
-  if (!isAdmin) {
+  if (!Cookies.get('token') || isAdmin) {
     return children;
   } else {
     return null;
@@ -23,7 +27,5 @@ function IsAdmin({ children }) {
 }
 
 export default IsAdmin;
-
-
 
 

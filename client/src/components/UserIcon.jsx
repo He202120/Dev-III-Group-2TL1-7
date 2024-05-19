@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie'; 
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom'
 
 const UserIcon = () => { 
 
@@ -23,7 +24,7 @@ const UserIcon = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://rfc-wetteren-api.onrender.com/users/${userId}`, config);
+        const response = await axios.get(`http://localhost:8000/users/${userId}`, config);
         setUserData(response.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -34,8 +35,18 @@ const UserIcon = () => {
   }, [userId]);
 
   const handleLogout = () => {
-    Cookies.remove('token');
-    window.location.reload();
+    axios.get('http://localhost:8000/logout', { withCredentials: true })
+        .then(response => {
+            if (response.status === 200) {
+                Cookies.remove('token');
+                window.location.href = '/';
+            } else {
+                console.error('Erreur lors de la déconnexion');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur de connexion lors de la déconnexion', error);
+        });
   };
 
   return (
@@ -48,7 +59,7 @@ const UserIcon = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>{userId.firstName}</DropdownMenuLabel>
+          <DropdownMenuLabel>{userData?.firstName || 'Bonjour!'}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem><Link to="/account/dashboard">Mon compte</Link></DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -60,6 +71,46 @@ const UserIcon = () => {
 };
 
 export default UserIcon;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

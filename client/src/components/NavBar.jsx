@@ -50,8 +50,10 @@ export default function NavBar() {
               <Link className="flex w-full items-center py-2 text-base font-semibold " to="/agenda">Agenda</Link>
               <Link className="flex w-full items-center py-2 text-base font-semibold " to="/auth/candidat">Postuler au club</Link>
               <Link className="flex w-full items-center py-2 text-base font-semibold " to="#">Actualité</Link>   
-              <Link className="flex w-full items-center py-2 text-base font-semibold " to="/admin/gestion">Gestionnaire</Link>   
               <SignedIn>
+                <IsAdmin>
+                  <Link className="flex w-full items-center py-2 text-base font-semibold " to="/admin/gestion">Gestionnaire</Link>   
+                </IsAdmin>
                 <UserIcon className="flex justify-center"/>
               </SignedIn>
               <SignedOut>
@@ -80,10 +82,12 @@ export default function NavBar() {
           <Link 
             className="font-semibold rounded-md px-3 py-2 text-sm transition-colors hover:underline hover:text-green-800 underline-offset-8"
             to="#">Actualité</Link>
-          <IsAdmin>
-            <Link className="font-semibold rounded-md px-3 py-2 text-sm transition-colors hover:underline hover:text-green-800 underline-offset-8"
-              to="/admin/gestion">Gestionnaire</Link>
-          </IsAdmin>
+            <SignedIn>
+              <IsAdmin>
+                <Link className="font-semibold rounded-md px-3 py-2 text-sm transition-colors hover:underline hover:text-green-800 underline-offset-8"
+                  to="/admin/gestion">Gestionnaire</Link>
+              </IsAdmin>
+            </SignedIn>
         </nav>
         <div className="hidden lg:flex">
           <SignedIn>
@@ -121,6 +125,15 @@ function MenuIcon(props) {
     </svg>
   )
 }
+
+
+
+
+
+
+
+
+
 
 
 

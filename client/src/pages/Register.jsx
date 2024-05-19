@@ -17,7 +17,6 @@ import {
   AlertTitle,
 } from "@/components/ui/alert"
 import { useNavigate } from "react-router-dom";
-//import {getCookie} from "@/utils/getCookie";
 
 const getCookie = (name) => {
   const cookies = document.cookie.split(';');
@@ -57,13 +56,25 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const reEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    if (!reEmail.test(formData.email)) {
+      setError("Veuillez entrer une adresse email valide.");
+      return;
+    }
+
+    const rePhone = /^\+\d{2}( ?\d{3})( ?\d{2})( ?\d{2})( ?\d{2})$/;
+    if (!rePhone.test(formData.phone)) {
+      setError("Veuillez entrer un numéro de téléphone valide.");
+      return;
+    }
+
     if (formData.password.length < 8) {
       setError("Le mot de passe doit contenir au moins 8 caractères.");
       return;
     }
 
     try {
-      const response = await axios.post("https://rfc-wetteren-api.onrender.com/users", formData);
+      const response = await axios.post("http://localhost:8000/users", formData);
       setFormData({
         firstName: "",
         lastName: "",
@@ -109,7 +120,7 @@ const Register = () => {
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="phone">Numéro de téléphone <span className="text-red-600">*</span></Label>
-                  <Input id="phone" name="phone" value={formData.phone} required onChange={handleChange} placeholder="+32 12 34 25 62" />
+                  <Input id="phone" name="phone" value={formData.phone} required onChange={handleChange} placeholder="+32 123 45 67 89" />
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="password">Mot de passe <span className="text-red-600">*</span></Label>
@@ -127,6 +138,15 @@ const Register = () => {
 };
 
 export default Register;
+
+
+
+
+
+
+
+
+
 
 
 

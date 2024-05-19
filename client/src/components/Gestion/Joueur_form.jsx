@@ -29,7 +29,7 @@ function Joueur_form(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post("https://rfc-wetteren-api.onrender.com/gestionnaire/add", {
+          const response = await axios.post("http://localhost:8000/gestionnaire/add", {
             nom,
             prenom,
             naissance,
@@ -134,5 +134,6 @@ function Joueur_form(){
 }
 
 export default Joueur_form;
+
 
 

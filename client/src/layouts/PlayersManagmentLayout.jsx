@@ -12,7 +12,7 @@ function usePlayers(role) {
     const [players, setPlayers] = useState([]);
 
     useEffect(() => {
-        axios.get('https://rfc-wetteren-api.onrender.com/players', { params: { role } })
+        axios.get('http://localhost:8000/players', { params: { role } })
             .then(response => {
                 setPlayers(response.data);
             })
@@ -124,6 +124,8 @@ const GestionJoueurs = () => {
 }
 
 export default GestionJoueurs;
+
+
 
 
 

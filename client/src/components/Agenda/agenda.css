@@ -51,7 +51,7 @@
     margin-right: auto; /* Centrer le formulaire horizontalement */
 }
 
-label {
+#formulaire label {
     display: inline-block;
     width: 120px; /* Largeur du label */
     text-align: right; /* Alignement du texte du label à droite */

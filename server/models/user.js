@@ -26,9 +26,34 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ['admin', 'user', "staff"],
+    enum: ['admin', 'user', "staff", "player"],
     default: 'user'
-  }
+  },
+  goals: {
+    type: Number,
+    required: false,
+    default: 0
+  },
+  assists: {
+    type: Number,
+    required: false,
+    default: 0
+  },
+  minutesPlayed: {
+    type: Number,
+    required: false,
+    default: 0
+  },
+  yellowCards: {
+    type: Number,
+    required: false,
+    default: 0
+  },
+  redCards: {
+    type: Number,
+    required: false,
+    default: 0
+  },
 });
 
 const User = mongoose.model('User', userSchema);

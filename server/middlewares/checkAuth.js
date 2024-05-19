@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 module.exports = function (req, res, next) {
   const authHeader = req.headers.authorization;
@@ -6,7 +7,7 @@ module.exports = function (req, res, next) {
   const [type, token] = authHeader.split(/\s+/);
   if (type !== "Bearer") res.sendStatus(401);
   try {
-    const payload = jwt.verify(token, 'strongSecret');
+    const payload = jwt.verify(token, process.env.JWTSECRET);
     req.userId = payload.sub;
     next();
   } catch (e) {

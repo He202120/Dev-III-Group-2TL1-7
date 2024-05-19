@@ -35,14 +35,15 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://rfc-wetteren-api.onrender.com/login", { email, password }, {
+      const response = await axios.post("http://localhost:8000/login", { email, password }, {
         headers: {
           "Content-Type": "application/json"
-        }
+        },
+        withCredentials: true
       });
       const { token } = response.data;
       document.cookie = `token=${token}; max-age=${4 * 60 * 60}`;
-      navigate("/"); // Redirect to home page
+      navigate("/");
     } catch (err) {
       setError("Identifiants incorrects");
     }
@@ -82,6 +83,11 @@ const Login = () => {
 }
 
 export default Login;
+
+
+
+
+
 
 
 
