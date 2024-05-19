@@ -73,6 +73,12 @@ const Register = () => {
       return;
     }
 
+    const belgianPhoneNumberRegex = /^(?:\+?32|0)(?:\d{2,3})?\d{3}\d{2}\d{2}$/;
+    if (!belgianPhoneNumberRegex.test(phoneNumber)) {
+      setError("Le numéro de téléphone belge est invalide.");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:8000/users", formData);
       setFormData({
@@ -82,7 +88,9 @@ const Register = () => {
         phone: "",
         password: "",
       });
+      console.log(response.data);
       navigate("/auth/login");
+      console.log(response.data);
     } catch (error) {
       setError("Le numéro de téléphone ou l'adresse mail est déjà utilisée.");
       return;
@@ -138,34 +146,3 @@ const Register = () => {
 };
 
 export default Register;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

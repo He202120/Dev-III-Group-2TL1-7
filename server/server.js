@@ -10,6 +10,7 @@ const session = require('express-session');
 const passport = require('passport');
 
 const app = express();
+<<<<<<< HEAD
 app.use(cookieParser());
 
 app.use(cors({
@@ -17,6 +18,8 @@ app.use(cors({
   credentials: true
 }));
 
+=======
+>>>>>>> 0abec3a62b5a27ce02ab70bb0683447ce184ef96
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
@@ -24,6 +27,12 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Bearer');
   next();
 });
+
+
+app.use(cors({
+  origin: ['https://rfc-wetteren.vercel.app'],
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(UsersRouter);

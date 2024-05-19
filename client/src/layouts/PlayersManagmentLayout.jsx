@@ -25,7 +25,7 @@ function usePlayers(role) {
 }
 
 function Postulants() {
-    const postulants = usePlayers('postulant');
+    const postulants = usePlayers('user');
 
     return (
         <div className="w-full lg:w-3/4 mx-auto">
