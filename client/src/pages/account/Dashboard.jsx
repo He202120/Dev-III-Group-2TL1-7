@@ -69,39 +69,38 @@ export default function Component() {
           <div className="grid gap-4 md:grid-cols-2">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                <CardTitle className="text-sm font-medium">Nombre de matchs</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-600">Nombre de minutes jouées</CardTitle>
                 <ActivityIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">15</div>
+                <div className="text-2xl font-bold">{userData?.minutesPlayed || '0'}</div>
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                <CardTitle className="text-sm font-medium">Nombre de buts</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-600">Nombre de buts</CardTitle>
                 <ActivityIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">5</div>
+                <div className="text-2xl font-bold">{userData?.goals || '0'}</div>
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                <CardTitle className="text-sm font-medium">Nombre de cartons jaunes</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-600">Nombre de cartons jaunes</CardTitle>
                 <ActivityIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">2</div>
-
+                <div className="text-2xl font-bold">{userData?.yellowCards || '0'}</div>
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                <CardTitle className="text-sm font-medium">Nombre de cartons rouges</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-600">Nombre de cartons rouges</CardTitle>
                 <ActivityIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">1</div>
+                <div className="text-2xl font-bold">{userData?.redCards || '0'}</div>
               </CardContent>
             </Card>
           </div>
@@ -201,6 +200,21 @@ function UsersIcon(props) {
     </svg>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

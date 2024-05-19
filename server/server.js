@@ -13,13 +13,13 @@ const app = express();
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ['https://rfc-wetteren.vercel.app'],
+  origin: ['https://rfc-wetteren.vercel.app/'],
   credentials: true
 }));
 
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://rfc-wetteren.vercel.app');
+  res.setHeader('Access-Control-Allow-Origin', 'https://rfc-wetteren.vercel.app/');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, UPDATE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Bearer');
   next();
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 
 app.use(cors({
-  origin: ['https://rfc-wetteren.vercel.app'],
+  origin: ['https://rfc-wetteren.vercel.app/'],
   credentials: true
 }));
 

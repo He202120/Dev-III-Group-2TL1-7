@@ -87,6 +87,7 @@ export default function Component() {
       const response = await axios.patch(`https://rfc-wetteren-api.onrender.com/users/${userId}`, formValues, config);
       setUserData(response.data);
       setSuccess("Vos informations ont été mises à jour avec succès.");
+      setError("");
       console.log('User data updated:', response.data);
     } catch (error) {
       console.error('Error updating user data:', error);
@@ -219,6 +220,12 @@ function UsersIcon(props) {
     </svg>
   )
 }
+
+
+
+
+
+
 
 
 
