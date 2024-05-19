@@ -23,7 +23,7 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-router.get('/users', async (req, res, next) => {
+router.get('/users', checkAuth, isAdmin, async (req, res, next) => {
   try {
     const users = await User.find();
     res.json(users);

@@ -10,7 +10,7 @@ function Liste_evenement() {
     const formulaireRef = useRef(null); // Référence pour le formulaire
 
     useEffect(() => {
-        axios.get("http://localhost:8000/agenda")
+        axios.get("https://rfc-wetteren-api.onrender.com/agenda")
             .then(res => {
                 const eventsData = res.data.map(event => ({
                     title: event.evenements,
@@ -48,7 +48,7 @@ function Liste_evenement() {
         };
 
         // Envoyer les données à votre backend via une requête POST
-        axios.post("http://localhost:8000/agenda/add", eventData)
+        axios.post("https://rfc-wetteren-api.onrender.com/agenda/add", eventData)
             .then(res => {
             })
             .catch(err => console.log(err));
@@ -97,4 +97,9 @@ function Liste_evenement() {
 }
 
 export default Liste_evenement;
+
+
+
+
+
 

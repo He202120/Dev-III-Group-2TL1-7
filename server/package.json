@@ -12,11 +12,7 @@
   "dependencies": {
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
-<<<<<<< HEAD
     "cookie-parser": "^1.4.6",
-=======
-    "body-parser": "^1.20.2",
->>>>>>> 0abec3a62b5a27ce02ab70bb0683447ce184ef96
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",

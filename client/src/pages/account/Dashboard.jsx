@@ -36,7 +36,7 @@ export default function Component() {
 
   const fetchData = async (userId, token) => {
     try {
-      const response = await axios.get(`http://localhost:8000/users/${userId}`, config);
+      const response = await axios.get(`https://rfc-wetteren-api.onrender.com/users/${userId}`, config);
       setUserData(response.data);
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -117,15 +117,6 @@ export default function Component() {
                     <TableHead className="text-left">Nombre de minutes</TableHead>
                   </TableRow>
                 </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">14/04/2024</TableCell>
-                    <TableCell>Genk</TableCell>
-                    <TableCell>Défenseur</TableCell>
-                    <TableCell className="text-left">4</TableCell>
-                    <TableCell className="text-left">90'</TableCell>
-                  </TableRow>
-                </TableBody>
               </Table>
             </Card>
           </div>
@@ -210,6 +201,14 @@ function UsersIcon(props) {
     </svg>
   )
 }
+
+
+
+
+
+
+
+
 
 
 

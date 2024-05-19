@@ -24,7 +24,7 @@ const UserIcon = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/users/${userId}`, config);
+        const response = await axios.get(`https://rfc-wetteren-api.onrender.com/users/${userId}`, config);
         setUserData(response.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -35,7 +35,7 @@ const UserIcon = () => {
   }, [userId]);
 
   const handleLogout = () => {
-    axios.get('http://localhost:8000/logout', { withCredentials: true })
+    axios.get('https://rfc-wetteren-api.onrender.com/logout', { withCredentials: true })
         .then(response => {
             if (response.status === 200) {
                 Cookies.remove('token');
@@ -71,6 +71,12 @@ const UserIcon = () => {
 };
 
 export default UserIcon;
+
+
+
+
+
+
 
 
 

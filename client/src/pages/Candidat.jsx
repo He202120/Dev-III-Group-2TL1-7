@@ -30,7 +30,7 @@ export default function Candidat() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/players', formData);
+      const response = await axios.post('https://rfc-wetteren-api.onrender.com/players', formData);
       console.log(response.data); 
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -86,6 +86,12 @@ export default function Candidat() {
     </>
   )
 }
+
+
+
+
+
+
 
 
 

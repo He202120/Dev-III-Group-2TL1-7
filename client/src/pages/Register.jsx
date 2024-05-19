@@ -80,7 +80,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/users", formData);
+      const response = await axios.post("https://rfc-wetteren-api.onrender.com/users", formData);
       setFormData({
         firstName: "",
         lastName: "",
@@ -146,3 +146,7 @@ const Register = () => {
 };
 
 export default Register;
+
+
+
+
