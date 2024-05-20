@@ -14,7 +14,6 @@ import Admin from "./pages/Admin";
 import Gestionnaire from "./pages/Gestionnaire";
 import Agenda from "./pages/Agenda";
 import Gestionnaire_inscription from "./pages/Gestionnaire_inscription";
-import Candidat from "./pages/Candidat";
 import Dashboard from "./pages/account/Dashboard";
 import Profile from "./pages/account/Profile";
 
@@ -59,11 +58,7 @@ const router = createBrowserRouter([
   {
     path: "/agenda",
     element: <Agenda />
-  },
-  {
-    path: "/auth/candidat",
-    element: <Candidat />
-  },
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -71,6 +66,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
 
 
 

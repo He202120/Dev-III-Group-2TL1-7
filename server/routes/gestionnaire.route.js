@@ -27,7 +27,7 @@ try {
 }
 });
 
-router.delete('/postulants/:id', async (req, res, next) => {
+router.delete('/postulants/:id', checkAuth, isAdmin, async (req, res, next) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
     if (user) {
@@ -40,7 +40,7 @@ router.delete('/postulants/:id', async (req, res, next) => {
   }
 });
 
-router.patch('/postulant/:id', async (req, res, next) => {
+router.patch('/postulant/:id', checkAuth, isAdmin, async (req, res, next) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, { role: 'player' }, { new: true });
     if (user) {

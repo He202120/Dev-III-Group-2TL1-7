@@ -48,7 +48,6 @@ export default function NavBar() {
               <hr />
               <Link className="flex w-full items-center py-2 text-base font-semibold " to="/">Acceuil</Link>
               <Link className="flex w-full items-center py-2 text-base font-semibold " to="/agenda">Agenda</Link>
-              <Link className="flex w-full items-center py-2 text-base font-semibold " to="/auth/candidat">Postuler au club</Link>
               <Link className="flex w-full items-center py-2 text-base font-semibold " to="#">Actualité</Link>   
               <SignedIn>
                 <IsAdmin>
@@ -76,9 +75,6 @@ export default function NavBar() {
           <Link
             className="font-semibold rounded-md px-3 py-2 text-sm transition-colors hover:underline hover:text-green-800 underline-offset-8"
             to="/agenda">Agenda</Link>
-          <Link 
-            className="font-semibold rounded-md px-3 py-2 text-sm transition-colors hover:underline hover:text-green-800 underline-offset-8"
-            to="/auth/candidat">Postuler au club</Link>
           <Link 
             className="font-semibold rounded-md px-3 py-2 text-sm transition-colors hover:underline hover:text-green-800 underline-offset-8"
             to="#">Actualité</Link>
@@ -125,6 +121,10 @@ function MenuIcon(props) {
     </svg>
   )
 }
+
+
+
+
 
 
 

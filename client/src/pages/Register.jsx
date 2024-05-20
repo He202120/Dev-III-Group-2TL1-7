@@ -1,57 +1,45 @@
-import React, { useState, useEffect } from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import React, { useState, useEffect } from "react";
 import {
   Alert,
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert"
-import { useNavigate } from "react-router-dom";
 
-const getCookie = (name) => {
-  const cookies = document.cookie.split(';');
-  for (let cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.split('=');
-    if (cookieName.trim() === name) {
-      return cookieValue;
-    }
-  }
-  return null;
-};
-
-const Register = () => {
+export default function Candidat() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    password: "",
-  });
-
   const [error, setError] = useState("");
-  
   useEffect(() => {
-    const token = getCookie("token"); 
+    const token = Cookies.get("token"); 
     if (token) {
       navigate("/account/dashboard");
     }
   }, []);
 
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    dateOfBirth: '',
+    password: '',
+    description: ''
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,72 +62,105 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("https://rfc-wetteren-api.onrender.com/users", formData);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        password: "",
-      });
-      console.log(response.data);
+      const response = await axios.post('https://rfc-wetteren-api.onrender.com/users', formData);
       navigate("/auth/login");
-      console.log(response.data);
     } catch (error) {
-      setError("Le numéro de téléphone ou l'adresse mail est déjà utilisée.");
-      return;
+      console.error('Error submitting form:', error);
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen flex-col">
-      {error && (
-        <Alert variant="destructive" className="w-[350px] mb-5">
+    <>
+      <div className="mx-auto max-w-sm space-y-6 mt-7">
+        <div className="space-y-2 text-center">
+          <h1 className="text-3xl font-bold">S'inscrire</h1>
+          <p className="text-gray-500 dark:text-gray-400">Entrez vos informations pour vous inscrire.</p>
+        </div>
+        {error && (
+        <Alert variant="destructive" className="w-[385px] mb-5">
           <AlertTitle>Erreur</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
-      <div className="flex justify-center items-center">
-        <Card className="w-[350px]">
-          <CardHeader>
-            <CardTitle>S'inscrire</CardTitle>
-            <CardDescription>Entrez vos informations pour vous inscrire</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit}>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="firstname">Prénom <span className="text-red-600">*</span></Label>
-                  <Input id="firstname" name="firstName" value={formData.firstName} required onChange={handleChange} placeholder="John" />
-                </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="lastname">Nom <span className="text-red-600">*</span></Label>
-                  <Input id="lastname" name="lastName" value={formData.lastName} required onChange={handleChange} placeholder="Doe"/>
-                </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="email">Adresse mail <span className="text-red-600">*</span></Label>
-                  <Input id="email" name="email" value={formData.email} required onChange={handleChange} placeholder="email@example.com" />
-                </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="phone">Numéro de téléphone <span className="text-red-600">*</span></Label>
-                  <Input id="phone" name="phone" value={formData.phone} required onChange={handleChange} placeholder="+32 123 45 67 89" />
-                </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="password">Mot de passe <span className="text-red-600">*</span></Label>
-                  <Input type="password" id="password" name="password" required value={formData.password} onChange={handleChange}  placeholder="**********" />
-                </div>
-                <p className="text-sm"><span className="text-red-600">*</span> champ obligatoire</p>
-              </div>
-              <Button type="submit" variant="rfc" className="w-full mt-5 m">S'inscrire</Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  );
-};
+        <form onSubmit={handleSubmit} className='space-y-4'>
+          <div className="flex space-x-2">
+            <div className="w-1/2 space-y-2">
+              <Label htmlFor="firstName">Prénom <span className="text-red-600">*</span></Label>
+              <Input name="firstName" id="firstName" placeholder="John" required value={formData.firstName} onChange={handleChange} />
+            </div>
+            <div className="w-1/2 space-y-2">
+              <Label htmlFor="lastName">Nom <span className="text-red-600">*</span></Label>
+              <Input name="lastName" id="lastName" placeholder="Doe" required value={formData.lastName} onChange={handleChange} />
+            </div>
+          </div>
+          <div className="flex space-x-2">
+            <div className="w-1/2 space-y-2">
+              <Label htmlFor="email">Email <span className="text-red-600">*</span></Label>
+              <Input name="email" id="email" placeholder="example@email.com" required value={formData.email} onChange={handleChange} />
+            </div>
+            <div className="w-1/2 space-y-2">
+                <Label htmlFor="phone">Numéro de téléphone <span className="text-red-600">*</span></Label>
+                <Input name="phone" id="phone" type="phone" placeholder="+32 412 25 36" required value={formData.phone} onChange={handleChange} />
+            </div>
 
-export default Register;
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="dateOfBirth">Date de naissance <span className="text-red-600">*</span></Label>
+            <Input name="dateOfBirth" id="dateOfBirth" type="date" required value={formData.dateOfBirth} onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="password">Mot de passe <span className="text-red-600">*</span></Label>
+            <Input name="password" id="password" required type="password" value={formData.password} onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="description">Présente-toi <span className="text-red-600">*</span></Label>
+            <Textarea name="description" id="description" placeholder="Poste, projets, anciens clubs etc ..." required value={formData.description} onChange={handleChange} />
+          </div>
+          <p><span className="text-red-600">*</span> champs obligatoires</p>
+          <Button className="w-full" type="submit" variant="rfc">S'inscire</Button>
+        </form>
+      </div>
+    </>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

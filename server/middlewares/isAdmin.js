@@ -5,7 +5,8 @@ module.exports = async function checkAdmin(req, res, next) {
   try {
     const userId = req.userId;
     const user = await User.findById(userId); 
-
+    console.log(userId)
+    console.log(user.role)
     if (user && user.role === 'admin') {
       next();
     } else {

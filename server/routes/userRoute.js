@@ -12,8 +12,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/', async (req, res) => {
-    res.json("Hello World");
-    return "hello vercel";
+    res.json("Hello Vercel");
 });
 
 router.get('/logout', (req, res) => {
@@ -32,14 +31,6 @@ router.get('/users', checkAuth, isAdmin, async (req, res, next) => {
   }
 });
 
-router.get('/players', async (req, res, next) => {
-  try {
-    const players = await Player.find();
-    res.json(players);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
 
 router.post("/users", async (req, res, next) => {
   try {
@@ -52,9 +43,11 @@ router.post("/users", async (req, res, next) => {
       email: req.body.email,
       phone: req.body.phone,
       password: hashedPassword, 
+      description: req.body.description,
+      dateOfBirth: req.body.dateOfBirth,
       role: req.body.role
     });
-
+   
     res.status(201).json({
       _id: newUser._id,
       firstName: newUser.firstName,
@@ -62,6 +55,8 @@ router.post("/users", async (req, res, next) => {
       email: newUser.email,
       phone: newUser.phone,
       password: newUser.password,
+      dateOfBirth: newUser.dateOfBirth,
+      description: newUser.description,
       role: newUser.role
     });
   } catch (err) {
@@ -113,7 +108,7 @@ router.get('/users/:id', checkAuth, async (req, res, next) => {
   }
 });
 
-router.patch('/users/:id', async (req, res, next) => {
+router.patch('/users/:id', checkAuth, async (req, res, next) => {
   try {
     const { oldPassword, newPassword, ...rest } = req.body;
     let user = await User.findById(req.params.id);
