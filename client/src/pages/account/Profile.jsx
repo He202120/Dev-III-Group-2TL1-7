@@ -168,7 +168,7 @@ export default function Component() {
             <div className="space-x-2 mt-4">
                 <div className="w-1/2 space-y-2">
                     <Label htmlFor="bio">Présente-toi</Label>
-                    <Textarea name="bio" id="bio" placeholder="Poste(s), projet(s), ancien(s) club(s) ..." value={formValues.bio} onChange={handleChange} />
+                    <Textarea name="bio" id="bio" placeholder="Poste(s), projet(s), ancien(s) club(s) ..." value={formValues.description} onChange={handleChange} />
                 </div>
             </div>
             <Button type="submit" variant="rfc" className="mt-10">Mettre à jour</Button>

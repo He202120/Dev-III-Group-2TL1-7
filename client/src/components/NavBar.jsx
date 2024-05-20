@@ -56,10 +56,10 @@ export default function NavBar() {
                 <UserIcon className="flex justify-center"/>
               </SignedIn>
               <SignedOut>
-                <Button variant="rfc" to="auth/register" className="mr-4 text-white">
-                  <Link to="auth/register" className="text-white pl-2 pr-2">S'inscrire</Link>
+                <Button variant="rfc" to="/auth/register" className="mr-4 text-white">
+                  <Link to="/auth/register" className="text-white pl-2 pr-2">S'inscrire</Link>
                 </Button>
-                <Button variant="secondary" to="auth/login"><Link to="auth/login">Se connecter</Link></Button>
+                <Button variant="secondary" to="/auth/login"><Link to="/auth/login">Se connecter</Link></Button>
               </SignedOut>
             </div>
           </SheetContent>
@@ -90,10 +90,10 @@ export default function NavBar() {
             <UserIcon/>
           </SignedIn>
           <SignedOut>
-            <Button variant="rfc" to="auth/register" className="mr-4 text-white">
-              <Link to="auth/register" className="text-white">S'inscrire</Link>
+            <Button variant="rfc" to="/auth/register" className="mr-4 text-white">
+              <Link to="/auth/register" className="text-white">S'inscrire</Link>
             </Button>
-            <Button variant="secondary" to="auth/login"><Link to="auth/login">Se connecter</Link></Button>
+            <Button variant="secondary" to="/auth/login"><Link to="/auth/login">Se connecter</Link></Button>
           </SignedOut>
         </div>
       </header>
@@ -121,6 +121,14 @@ function MenuIcon(props) {
     </svg>
   )
 }
+
+
+
+
+
+
+
+
 
 
 
