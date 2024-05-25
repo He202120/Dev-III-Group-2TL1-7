@@ -8,7 +8,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb://localhost:27017/projet-football")
+mongoose.connect("mongodb+srv://martin:73zeDP9DxC0qb1jq@clusterprojetdeviii.jj6kqfe.mongodb.net/Projet-football")
 
 app.get('/getUsers', (req, res) => {
     UserModel.find()

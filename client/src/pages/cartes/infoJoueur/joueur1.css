@@ -1,0 +1,12 @@
+th,td,table{
+    border: 1px solid;
+    align-items: center;
+}
+.card-image{
+        max-width: 50%;
+        height:fit-content;
+        margin-bottom: 10px;
+        margin-right: 20px;
+}
+
+

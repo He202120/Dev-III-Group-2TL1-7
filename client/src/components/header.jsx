@@ -47,7 +47,8 @@ const header = () => {
                             <li style={styles_nav}><a href="#">Accueil</a></li>
                             <li style={styles_nav}><a href="#">Agenda</a></li>
                             <li style={styles_nav}><a href="#">Magasin</a></li>
-                            <li style={styles_nav}><a href="#">Actualités</a></li>
+                            <li style={styles_nav}><a href="/cartes">Teams</a></li>
+                            <li style={styles_nav}><a href="/shops">shops</a></li>
                             <li style={styles_nav}><a href="/composition">Gestionnaire</a></li>
                         </ul>
                     </nav>
