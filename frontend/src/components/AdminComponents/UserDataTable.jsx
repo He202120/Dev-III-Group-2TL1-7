@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Modal, Table, Form as BootstrapForm } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useBlockUserMutation, useUnblockUserMutation, useUpdateUserByAdminMutation, useDeleteUserMutation } from "../../slices/adminApiSlice";
+import React from 'react';
 
 const UsersDataTable = ({ users }) => {
 
