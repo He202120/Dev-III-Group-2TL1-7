@@ -81,7 +81,7 @@ function Liste_evenement() {
     const localizer = momentLocalizer(moment);
 
     return (
-        <div style={{ height: 500 }}>
+        <div style={{ height: 500 }} id='af'>
             <Calendar
                 localizer={localizer}
                 events={events}
@@ -89,26 +89,29 @@ function Liste_evenement() {
                 endAccessor="end"
                 style={{ margin: 'auto', width: '70%' }}
             />
-            <form onSubmit={handleSubmit} id='formulaire' ref={formulaireRef} style={{ marginTop: '20px' }}>
+            <form onSubmit={handleSubmit} id='formulaire' data-testid='fortest' ref={formulaireRef} style={{ marginTop: '20px' }}>
                 <LocalizationProvider dateAdapter={AdapterMoment}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                         <DateTimePicker
                             label="Start date"
+                            data-testid="started"
                             value={dateStart}
                             onChange={setDateStart}
                             renderInput={(params) => <TextField {...params} required />}
                         />
                         <DateTimePicker
                             label="End date"
+                            data-testid="ended"
                             value={dateEnd}
                             onChange={setDateEnd}
                             renderInput={(params) => <TextField {...params} required />}
                         />
                         <TextField
                             label="Event"
+                            data-testid="evented"
                             value={evenement}
                             onChange={(e) => setEvenementInput(e.target.value)}
-                            required
+                            renderInput={(params) => <TextField {...params} required />}
                         />
                         <Button type="submit" variant="contained" color="primary">
                             Add to calendar
