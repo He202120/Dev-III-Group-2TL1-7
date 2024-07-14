@@ -1,5 +1,6 @@
 import Selection from "../models/selectionModel.js";
 import Evenement from "../models/evenementModels.js"
+import Equipment from "../models/equipmentModel.js";
 
 const fetchSelection = async () => {
     try {
@@ -25,5 +26,17 @@ const fetchAgenda = async () => {
   }
 };
 
-  export { fetchSelection, fetchAgenda };
+const fetchEquipement = async () => {
+  try {
+    const users = await Equipment.find({}, { equipment: 1, equipment_size: 1, equipment_type: 1, special_Request: 1});
+
+    return users;
+  } catch (error) {
+    console.error("Error fetching users:", error);
+
+    throw error;
+  }
+};
+
+  export { fetchSelection, fetchAgenda, fetchEquipement };
 

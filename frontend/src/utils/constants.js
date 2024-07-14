@@ -8,6 +8,7 @@ export const USER_PROFILE_URL = '/api/v1/user/profile'
 export const USER_DISPLAY_SELECTION_URL = '/api/v1/user/get-selection'
 export const USER_AGENDA_DISPLAY_URL = "/api/v1/user/get-agenda"
 export const USER_PLAYERS_DATA_FETCH_URL = '/api/v1/user/get-players'
+export const USER_Equipement_PLAYERS_URL = '/api/v1/user/get-equipement'
 
 export const ADMIN_AUTHENTICATION_URL = '/api/v1/admin/auth'
 export const ADMIN_LOGOUT_URL = '/api/v1/admin/logout'
@@ -30,3 +31,4 @@ export const ADMIN_AGENDA_DISPLAY_URL = "/api/v1/admin/get-agenda"
 export const ADMIN_PUSH_EVENEMENT_URL = "/api/v1/admin/set-agenda"
 
 export const PROFILE_IMAGE_DIR_PATH = '//localhost:5000/UserProfileImages/'
+

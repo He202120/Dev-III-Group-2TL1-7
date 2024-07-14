@@ -17,6 +17,7 @@ import {
   updateUserProfile,
   getSelectionDisplay,
   getAgendaDisplay,
+  getAllEquipement,
 } from "../../controllers/userController.js";
 
 import { getAllPlayers } from "../../controllers/adminController.js";
@@ -42,6 +43,8 @@ router.post("/get-selection", requireAuth, verifyUser, getSelectionDisplay);
 router.post("/get-agenda", requireAuth, verifyUser, getAgendaDisplay)
 
 router.post("/get-players", requireAuth, verifyUser, getAllPlayers)
+
+router.post("/get-equipement", requireAuth, verifyUser, getAllEquipement)
 
 //* ==================== User Profile Routes ====================
 

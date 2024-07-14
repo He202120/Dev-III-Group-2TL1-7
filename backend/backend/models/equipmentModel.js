@@ -1,39 +1,19 @@
 import mongoose from 'mongoose';
 
 const equipmentSchema = mongoose.Schema({
-    jersey_top_type: {
+    equipment: {
+        type: String,
+        enum: ['jersey_top_type', 'jersey_bottom_type', 'shin_guard','socks'],
+        required: true
+    },
+    equipment_size: {
+        type: String,
+        enum: ["XXS", "XS", "S", "M", "L", "XL", "no"],
+        required: true
+    },
+    equipment_type: {
         type: String,
         enum: ['training', 'match', 'no'],
-        required: true
-    },
-    jersey_top_size: {
-        type: String,
-        enum: ["XXS", "XS", "S", "M", "L", "XL", "no"],
-        required: true
-    },
-    jersey_bottom_type: {
-        type: String,
-        enum: ['training', 'match', 'no'],
-        required: true
-    },
-    jersey_bottom_size: {
-        type: String,
-        enum: ["XXS", "XS", "S", "M", "L", "XL", "no"],
-        required: true
-    },
-    shin_guard: {
-        type: String,
-        enum: ["XXS", "XS", "S", "M", "L", "XL", "no"],
-        required: true
-    },
-    socks: {
-        type: String,
-        enum: ['training', 'match', 'no'],
-        required: true
-    },
-    sock_size: {
-        type: String,
-        enum: ["XXS", "XS", "S", "M", "L", "XL", "no"],
         required: true
     },
     special_Request: {

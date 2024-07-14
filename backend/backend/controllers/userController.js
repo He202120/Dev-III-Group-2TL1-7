@@ -9,6 +9,7 @@ import User from "../models/userModel.js";
 import {
   fetchSelection,
   fetchAgenda,
+  fetchEquipement,
 } from "../utils/userHelper.js";
 
 import generateAuthToken from "../utils/jwtHelpers/generateAuthToken.js";
@@ -166,6 +167,21 @@ const getSelectionDisplay = asyncHandler(async (req, res) => {
   }
 });
 
+//////////////////////////////////////////////
+const getAllEquipement = asyncHandler(async (req, res) => {
+  const usersData = await fetchSelection();
+
+  if (usersData) {
+
+    res.status(200).json({ usersData });
+
+  } else {
+
+    throw new NotFoundError();
+
+  }
+});
+
 // FIn ajout Martin
 
 //ajout dimitri
@@ -231,4 +247,5 @@ export {
   updateUserProfile,
   getSelectionDisplay,
   getAgendaDisplay,
+  getAllEquipement,
 };
