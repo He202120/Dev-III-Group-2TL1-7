@@ -62,6 +62,11 @@ const Header = () => {
                        Selection
                     </Nav.Link>                 
                   </LinkContainer> 
+                  <LinkContainer to="/equipement">
+                    <Nav.Link >
+                       Equipement
+                    </Nav.Link>                 
+                  </LinkContainer> 
                   <LinkContainer to="/dashboard">
                     <Nav.Link >
                        Dashboard

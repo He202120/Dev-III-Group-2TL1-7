@@ -20,6 +20,8 @@ import RegisterScreen from "./screens/userScreens/RegisterScreen.jsx";
 import ProfileScreen from "./screens/userScreens/ProfileScreen.jsx";
 import DisplayFormation from "./screens/userScreens/FormationSelected.jsx"
 import DashBoardUser from "./screens/userScreens/Dashboardplayer.jsx"
+import EquipementUser  from "./screens/userScreens/equipment.jsx"
+
 
 //? ==================================== Admin Screens Import ====================================
 import AdminPrivateRoutes from "./screens/adminScreens/PrivateRoutes.jsx";
@@ -50,6 +52,8 @@ const router = createBrowserRouter(
       <Route path="/agenda" element={<AgendaUser />} />
 
       <Route path="/dashboard" element={<DashBoardUser />} />
+
+      <Route path="/equipement" element={<EquipementUser />} />
       
 
       {/* USER PRIVATE ROUTES */}

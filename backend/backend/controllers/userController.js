@@ -169,7 +169,7 @@ const getSelectionDisplay = asyncHandler(async (req, res) => {
 
 //////////////////////////////////////////////
 const getAllEquipement = asyncHandler(async (req, res) => {
-  const usersData = await fetchSelection();
+  const usersData = await fetchEquipement();
 
   if (usersData) {
 

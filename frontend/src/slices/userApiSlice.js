@@ -1,5 +1,5 @@
 import { apiSlice } from "./apiSlice";
-import { USER_AUTHENTICATION_URL, USER_LOGOUT_URL, USER_REGISTRATION_URL, USER_PROFILE_URL, USER_DISPLAY_SELECTION_URL, USER_AGENDA_DISPLAY_URL, USER_PLAYERS_DATA_FETCH_URL,USER_PLAYERS_Equipement_URL, } from '../utils/constants.js';
+import { USER_AUTHENTICATION_URL, USER_LOGOUT_URL, USER_REGISTRATION_URL, USER_PROFILE_URL, USER_DISPLAY_SELECTION_URL, USER_AGENDA_DISPLAY_URL, USER_PLAYERS_DATA_FETCH_URL,USER_PLAYERS_EQUIPEMENT_URL } from '../utils/constants.js';
 
 const USER_AUTH_URL = USER_AUTHENTICATION_URL; 
 
@@ -69,7 +69,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         getUserEquipement: builder.mutation({
             
             query: () => ({
-                url: USER_PLAYERS_Equipement_URL,
+                url: USER_PLAYERS_EQUIPEMENT_URL,
                 method: 'POST'
             })
 

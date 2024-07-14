@@ -3,13 +3,9 @@ import axios from 'axios';
 
 const EquipmentForm = () => {
     const [formData, setFormData] = useState({
-        jersey_top_type: '',
-        jersey_top_size: '',
-        jersey_bottom_type: '',
-        jersey_bottom_size: '',
-        shin_guard: '',
-        socks: '',
-        sock_size: '',
+        equipment: '',
+        equipment_size: '',
+        equipment_type: '',
         special_Request: ''
     });
 
@@ -32,15 +28,19 @@ const EquipmentForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="jersey_top_type">Chaussette :</label>
-            <select name="jersey_top_type" id="jersey_top_type" onChange={handleChange}>
-                <option value="training">Training</option>
-                <option value="match">Match</option>
-                <option value="no">No</option>
+            <label htmlFor="equipment">Équipement :</label>
+            <select name="equipment" id="equipment" onChange={handleChange}>
+                <option value="">Select Equipment</option>
+                <option value="jersey_top_type">Maillot Haut</option>
+                <option value="jersey_bottom_type">Maillot Bas</option>
+                <option value="shin_guard">Protège-Tibia</option>
+                <option value="socks">Chaussettes</option>
             </select>
             <br />
-            <label htmlFor="jersey_top_size">Taille Chaussette :</label>
-            <select name="jersey_top_size" id="jersey_top_size" onChange={handleChange}>
+
+            <label htmlFor="equipment_size">Taille Équipement :</label>
+            <select name="equipment_size" id="equipment_size" onChange={handleChange}>
+                <option value="">Select Size</option>
                 <option value="XXS">XXS</option>
                 <option value="XS">XS</option>
                 <option value="S">S</option>
@@ -50,38 +50,27 @@ const EquipmentForm = () => {
                 <option value="no">No</option>
             </select>
             <br />
-            <label htmlFor="jersey_bottom_type">Maillot Haut :</label>
-            <input type="text" id="jersey_bottom_type" name="jersey_bottom_type" onChange={handleChange} />
-            <br />
-            <label htmlFor="jersey_bottom_size">Maillot Bas :</label>
-            <input type="text" id="jersey_bottom_size" name="jersey_bottom_size" onChange={handleChange} />
-            <br />
-            <label htmlFor="shin_guard">Protège :</label>
-            <input type="text" id="shin_guard" name="shin_guard" onChange={handleChange} />
-            <br />
-            <label htmlFor="socks">Chaussettes :</label>
-            <select name="socks" id="socks" onChange={handleChange}>
-                <option value="training">Training</option>
+
+            <label htmlFor="equipment_type">Type d'Équipement :</label>
+            <select name="equipment_type" id="equipment_type" onChange={handleChange}>
+                <option value="">Select Type</option>
+                <option value="training">Entraînement</option>
                 <option value="match">Match</option>
                 <option value="no">No</option>
             </select>
             <br />
-            <label htmlFor="sock_size">Taille Chaussette :</label>
-            <select name="sock_size" id="sock_size" onChange={handleChange}>
-                <option value="XXS">XXS</option>
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="no">No</option>
-            </select>
-            <br />
+
             <label htmlFor="special_Request">Demande Particulière :</label>
             <textarea id="special_Request" name="special_Request" onChange={handleChange}></textarea>
             <br />
+
             <button type="submit">Envoyer</button>
-            <button type="reset">Rafraîchir</button>
+            <button type="reset" onClick={() => setFormData({
+                equipment: '',
+                equipment_size: '',
+                equipment_type: '',
+                special_Request: ''
+            })}>Rafraîchir</button>
         </form>
     );
 };
