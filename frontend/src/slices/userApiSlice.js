@@ -1,5 +1,5 @@
 import { apiSlice } from "./apiSlice";
-import { USER_AUTHENTICATION_URL, USER_LOGOUT_URL, USER_REGISTRATION_URL, USER_PROFILE_URL, USER_DISPLAY_SELECTION_URL, USER_AGENDA_DISPLAY_URL, USER_PLAYERS_DATA_FETCH_URL,USER_PLAYERS_EQUIPEMENT_URL } from '../utils/constants.js';
+import { USER_AUTHENTICATION_URL, USER_LOGOUT_URL, USER_REGISTRATION_URL, USER_PROFILE_URL, USER_DISPLAY_SELECTION_URL, USER_AGENDA_DISPLAY_URL, USER_PLAYERS_DATA_FETCH_URL,USER_PLAYERS_EQUIPEMENT_URL, USER_SELLECT_EQUIPEMENT_URL} from '../utils/constants.js';
 
 const USER_AUTH_URL = USER_AUTHENTICATION_URL; 
 
@@ -62,7 +62,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             
             query: () => ({
                 url: USER_PLAYERS_DATA_FETCH_URL,
-                method: 'POST'
+                method: 'POST',
             })
 
         }),
@@ -70,14 +70,23 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             
             query: () => ({
                 url: USER_PLAYERS_EQUIPEMENT_URL,
-                method: 'POST'
+                method: 'POST',
             })
-
+        }),
+        setUserEquipement: builder.mutation({
+            
+            query: (data) => ({
+                url: USER_SELLECT_EQUIPEMENT_URL,
+                method: 'POST',
+                body: data
+            })
+      
         })
 
-
+        }),
+       
     })
-})
 
+        
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useUpdateUserMutation, useDisplaySelectionUserMutation, useDisplayAgendaUserMutation, useGetUserPlayersDataMutation, useGetUserEquipementMutation } = usersApiSlice;
+export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useUpdateUserMutation, useDisplaySelectionUserMutation, useDisplayAgendaUserMutation, useGetUserPlayersDataMutation, useGetUserEquipementMutation ,useSetUserEquipementMutation} = usersApiSlice;

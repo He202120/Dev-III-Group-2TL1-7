@@ -6,6 +6,8 @@ import { BadRequestError } from "base-error-handler";
 
 import User from "../models/userModel.js";
 
+import Equipment from "../models/equipmentModel.js"
+
 import {
   fetchSelection,
   fetchAgenda,
@@ -15,6 +17,7 @@ import {
 import generateAuthToken from "../utils/jwtHelpers/generateAuthToken.js";
 import destroyAuthToken from "../utils/jwtHelpers/destroyAuthToken.js";
 import sendMail from "../utils/EmailSender/mail.js";
+/////////wilfried/////////////
 
 
 const authUser = asyncHandler(async (req, res) => {
@@ -167,9 +170,9 @@ const getSelectionDisplay = asyncHandler(async (req, res) => {
   }
 });
 
-//////////////////////////////////////////////
+///////////////////wilfried///////////////////////////
 const getAllEquipement = asyncHandler(async (req, res) => {
-  const usersData = await fetchEquipement();
+  const usersData = await fetchEquipement();   
 
   if (usersData) {
 
@@ -238,6 +241,33 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     throw new BadRequestError("User not found.");
   }
 });
+/*******************************wilfried************************************************** */
+const setEquipmentTeam = asyncHandler(async (req, res) => {
+  /*
+     # Desc: Register new team
+     # Route: POST /api/v1/admin/set-team
+     # Access: PUBLIC
+    */
+
+  const {equipment, equipment_size, equipment_type, special_Request } = req.body;
+
+  try {
+    // Store the team data to DB
+    const newEquipment = await Equipment.create({
+      equipment: equipment,
+      equipment_size: equipment_size,
+      equipment_type: equipment_type,
+      special_Request: special_Request,
+    });
+
+    res.status(201).json({
+      message: 'request registered successfully'
+    });
+  } catch (error) {
+    res.status(500);
+    throw new Error('Failed to register team');
+  }
+});
 
 export {
   authUser,
@@ -248,4 +278,5 @@ export {
   getSelectionDisplay,
   getAgendaDisplay,
   getAllEquipement,
+  setEquipmentTeam ,
 };

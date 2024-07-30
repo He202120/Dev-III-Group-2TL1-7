@@ -28,11 +28,11 @@ const fetchAgenda = async () => {
 
 const fetchEquipement = async () => {
   try {
-    const users = await Equipment.find({}, { equipment: 1, equipment_size: 1, equipment_type: 1, special_Request: 1});
+    const equip = await Equipment.find({}, { equipment: 1, equipment_size: 1, equipment_type: 1, special_Request: 1});
 
-    return users;
+    return equip;
   } catch (error) {
-    console.error("Error fetching users:", error);
+    console.error("Error fetching equip:", error);
 
     throw error;
   }

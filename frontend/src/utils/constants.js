@@ -9,6 +9,7 @@ export const USER_DISPLAY_SELECTION_URL = '/api/v1/user/get-selection'
 export const USER_AGENDA_DISPLAY_URL = "/api/v1/user/get-agenda"
 export const USER_PLAYERS_DATA_FETCH_URL = '/api/v1/user/get-players'
 export const USER_PLAYERS_EQUIPEMENT_URL = '/api/v1/user/get-equipement'
+export const USER_SELLECT_EQUIPEMENT_URL = '/api/v1/user/set-equipement'
 
 export const ADMIN_AUTHENTICATION_URL = '/api/v1/admin/auth'
 export const ADMIN_LOGOUT_URL = '/api/v1/admin/logout'
