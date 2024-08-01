@@ -52,6 +52,7 @@ const EquipmentForm = () => {
               <option value="jersey_bottom_type">Jersey Bottom</option>
               <option value="shin_guard">Shin Guard</option>
               <option value="socks">Socks</option>
+              <option value="no">No</option>
             </Form.Select>
           </Form.Group>
   

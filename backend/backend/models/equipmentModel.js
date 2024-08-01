@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const equipmentSchema = mongoose.Schema({
     equipment: {
         type: String,
-        enum: ['jersey_top_type', 'jersey_bottom_type', 'shin_guard','socks'],
+        enum: ['jersey_top_type', 'jersey_bottom_type', 'shin_guard','socks','no'],
         required: true
     },
     equipment_size: {

@@ -27,6 +27,7 @@ import {
   updatePositionFetch,
   //ajout dimitri
   fetchAgenda,
+  fetchtabequipement,
 } from "../utils/adminHelpers.js";
 
 const authAdmin = asyncHandler(async (req, res) => {
@@ -494,6 +495,22 @@ const updateUserData = asyncHandler(async (req, res) => {
   }
 });
 
+
+const getTabEquipement = asyncHandler(async (req, res) => {
+  try {
+    const usersData = await fetchtabequipement(); // Appel à la fonction pour récupérer les données
+
+    if (usersData) {
+      res.status(200).json({ usersData }); // Réponse en cas de succès
+    } else {
+      throw new NotFoundError(); // Lever une erreur si les données ne sont pas trouvées
+    }
+  } catch (error) {
+    // Gérer d'autres erreurs possibles
+    res.status(500).json({ message: error.message });
+  }
+});
+
 export {
   authAdmin,
   registerAdmin,
@@ -514,4 +531,7 @@ export {
   //ajout dimitri
   getAgenda,
   setAgenda,
+
+  getTabEquipement,
 };
+

@@ -73,7 +73,12 @@ const AdminHeader = () => {
                     <Nav.Link >
                        Players
                     </Nav.Link>                 
-                  </LinkContainer>                       
+                  </LinkContainer> 
+                  <LinkContainer to="/admin/AskP-layer">
+                    <Nav.Link >
+                      AskPlayer
+                    </Nav.Link>                 
+                  </LinkContainer>              
                   <NavDropdown title={adminInfo.name} id="userName">
                     <LinkContainer to='/admin/profile'>
                       <NavDropdown.Item> Profile </NavDropdown.Item>

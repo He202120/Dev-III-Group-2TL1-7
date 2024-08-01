@@ -32,6 +32,8 @@ import {
   //ajout dimitri
   getAgenda,
   setAgenda,
+
+  getTabEquipement
   
 } from "../../controllers/adminController.js";
 
@@ -85,6 +87,8 @@ router.delete("/delete-team", requireAuth, verifyAdmin, validateRequest, deleteT
 router.post("/get-agenda", requireAuth, verifyAdmin, getAgenda);
 
 router.post("/set-agenda", requireAuth, verifyAdmin, setAgenda);
+
+router.post("/get-tabequipement", requireAuth, verifyAdmin, getTabEquipement);
 // fin ajout
 
 router.patch("/block-user", requireAuth, verifyAdmin, adminUserBlockingDataValidation, validateRequest, blockUser);

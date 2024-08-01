@@ -36,6 +36,8 @@ import TableFormation from "./screens/adminScreens/FormationTable.jsx"
 import Agenda from "./screens/adminScreens/AgendaTable.jsx"
 import AgendaUser from "./screens/userScreens/AgendaTableUser.jsx"
 
+import Equipment from "./screens/adminScreens/equipementTab.jsx"
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -76,6 +78,8 @@ const router = createBrowserRouter(
         <Route path="/admin/player-info" element={<TableDataPlayers />} />
         <Route path="/admin/formation" element={<TableFormation />} />
         <Route path="/admin/agenda" element={<Agenda />} />
+        {/*************wilfried************************ */}
+        <Route path="/admin/AskP-layer" element={<Equipment />} />
       </Route>
     </Route>
   )

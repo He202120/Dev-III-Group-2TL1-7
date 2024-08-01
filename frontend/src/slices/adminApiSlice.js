@@ -18,6 +18,8 @@ import {
     //ajout dimitri
     ADMIN_AGENDA_DISPLAY_URL,
     ADMIN_PUSH_EVENEMENT_URL,
+
+    ADMIN_TAB_EQUIPEMENT_URL
 } from '../utils/constants.js';
 
 
@@ -173,9 +175,17 @@ export const adminApiSlice = apiSlice.injectEndpoints({
                 body: data
             })
 
+        }),
+        /////////////////////wilfried/////////////////////////
+        getTabEquipement: builder.mutation({
+
+            query: (data) => ({
+                url: ADMIN_TAB_EQUIPEMENT_URL,
+                method: 'POST',
+                body: data
+            })
         })
 
-        // fin ajoute 
     })
 })
 
@@ -199,5 +209,7 @@ export const {
     //ajout dimitri
     useGetAgendaMutation,
     useSetEvenementMutation,
+
+    useGetTabEquipementMutation
 
 } = adminApiSlice;

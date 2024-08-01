@@ -3,6 +3,8 @@ import Team from "../models/teamModel.js";
 //ajout dimitri 
 import Evenement from "../models/evenementModels.js";
 
+import Equipment from "../models/equipmentModel.js"
+
 const fetchAllUsers = async () => {
   try {
     const users = await User.find({}, { name: 1, email: 1, blocked: 1, position: 1 });
@@ -142,6 +144,17 @@ const updatePositionFetch = async (userData) => {
     throw error;
   }
 };
+////////////////////////wilfried//////////////////////
+const fetchtabequipement = async () => {
+  try {
+    const timetable = await Equipment.find({}, { equipment: 1, equipment_size: 1, equipment_type: 1, special_Request: 1}); 
+
+    return timetable;
+  } catch (error) {
+    console.error("Error fetching players:", error);
+    throw error;
+  }
+};
 
 //ajout martin
 
@@ -156,4 +169,6 @@ export {
   fetchAllFormation, 
   fetchAgenda, 
   updatePositionFetch,
+
+  fetchtabequipement,
 };
