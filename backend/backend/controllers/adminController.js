@@ -10,6 +10,8 @@ import Team from "../models/teamModel.js"
 //ajout dimitri
 import EvenementModel from "../models/evenementModels.js";
 
+import Equipment from "../models/equipmentModel.js"
+
 
 import { BadRequestError, NotAuthorizedError, NotFoundError } from "base-error-handler";
 
@@ -495,7 +497,7 @@ const updateUserData = asyncHandler(async (req, res) => {
   }
 });
 
-
+//////////////////////////////wilfried//////////////////////////
 const getTabEquipement = asyncHandler(async (req, res) => {
   try {
     const usersData = await fetchtabequipement(); // Appel à la fonction pour récupérer les données
@@ -509,6 +511,23 @@ const getTabEquipement = asyncHandler(async (req, res) => {
     // Gérer d'autres erreurs possibles
     res.status(500).json({ message: error.message });
   }
+});
+
+const DeleteEquipment = asyncHandler(async (req, res) => {
+  const userId = req.body.userId;
+
+  if (!userId) {
+    throw new BadRequestError("UserId not received in request - User blocking failed.");
+  }
+
+  const deletedUser = await Equipment.findByIdAndDelete(userId)
+
+  if (deletedUser) {
+    res.status(200).json({ message: "User deleted successfully." });
+  } else {
+    throw new BadRequestError("User not found or already deleted.");
+  }
+
 });
 
 export {
@@ -531,7 +550,8 @@ export {
   //ajout dimitri
   getAgenda,
   setAgenda,
-
+////////wilfried/////////
   getTabEquipement,
+  DeleteEquipment
 };
 

@@ -18,8 +18,9 @@ import {
     //ajout dimitri
     ADMIN_AGENDA_DISPLAY_URL,
     ADMIN_PUSH_EVENEMENT_URL,
-
-    ADMIN_TAB_EQUIPEMENT_URL
+////////////wilfried//////////////////////////////
+    ADMIN_TAB_EQUIPEMENT_URL,
+    ADMIN_DELETE_EQUIPEMENT_URL
 } from '../utils/constants.js';
 
 
@@ -184,8 +185,16 @@ export const adminApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             })
-        })
+        }),
 
+        DeleteEquipment: builder.mutation({
+                
+            query: (data) => ({
+                url: ADMIN_DELETE_EQUIPEMENT_URL,
+                method: 'DELETE',
+                body: data
+            })
+        })
     })
 })
 
@@ -209,7 +218,8 @@ export const {
     //ajout dimitri
     useGetAgendaMutation,
     useSetEvenementMutation,
-
-    useGetTabEquipementMutation
+    //////wilfried////////////////
+    useGetTabEquipementMutation,
+    useDeleteEquipmentMutation
 
 } = adminApiSlice;

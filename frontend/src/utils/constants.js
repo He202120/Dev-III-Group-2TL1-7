@@ -29,6 +29,7 @@ export const ADMIN_DELETE_TEAM_URL = "/api/v1/admin/delete-team"
 
 ///////////////////wilfried////////////////////////////////////
 export const ADMIN_TAB_EQUIPEMENT_URL = "/api/v1/admin/get-tabequipement"
+export const ADMIN_DELETE_EQUIPEMENT_URL = "/api/v1/admin/delete-equipment"
 
 // ajout dimitri
 export const ADMIN_AGENDA_DISPLAY_URL = "/api/v1/admin/get-agenda"

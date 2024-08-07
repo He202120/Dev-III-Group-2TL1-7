@@ -32,8 +32,9 @@ import {
   //ajout dimitri
   getAgenda,
   setAgenda,
-
-  getTabEquipement
+/////////////////////wilfried////////
+  getTabEquipement,
+  DeleteEquipment
   
 } from "../../controllers/adminController.js";
 
@@ -82,6 +83,8 @@ router.patch("/change-position", requireAuth, verifyAdmin, validateRequest, upda
 router.delete("/delete-user", requireAuth, verifyAdmin, validateRequest, deleteUserData);
 
 router.delete("/delete-team", requireAuth, verifyAdmin, validateRequest, deleteTeamData);
+//////////////wilfried////////////////////////////////
+router.delete("/delete-equipment", requireAuth, verifyAdmin, validateRequest, DeleteEquipment);
 
 //ajout dimitri
 router.post("/get-agenda", requireAuth, verifyAdmin, getAgenda);
