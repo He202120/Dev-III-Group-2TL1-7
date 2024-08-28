@@ -1,6 +1,11 @@
+
 import mongoose from 'mongoose';
 
 const equipmentSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
     equipment: {
         type: String,
         enum: ['jersey_top_type', 'jersey_bottom_type', 'shin_guard','socks','no'],
@@ -18,7 +23,12 @@ const equipmentSchema = mongoose.Schema({
     },
     special_Request: {
         type: String
-    }
+    },
+    /*user: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User', // Référence au modèle User
+        required: true // Optionnel, mais peut être utile pour s'assurer que chaque équipement est lié à un utilisateur
+    }*/
 }, {
     timestamps: true
 });

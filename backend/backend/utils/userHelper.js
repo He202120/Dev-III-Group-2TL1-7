@@ -28,7 +28,7 @@ const fetchAgenda = async () => {
 
 const fetchEquipement = async () => {
   try {
-    const equip = await Equipment.find({}, { equipment: 1, equipment_size: 1, equipment_type: 1, special_Request: 1});
+    const equip = await Equipment.find({}, {name: 1, equipment: 1, equipment_size: 1, equipment_type: 1, special_Request: 1});
 
     return equip;
   } catch (error) {

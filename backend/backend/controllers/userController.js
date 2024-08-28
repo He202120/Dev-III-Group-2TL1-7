@@ -249,11 +249,12 @@ const setEquipmentTeam = asyncHandler(async (req, res) => {
      # Access: PUBLIC
     */
 
-  const {equipment, equipment_size, equipment_type, special_Request } = req.body;
+  const {name,equipment, equipment_size, equipment_type, special_Request } = req.body;
 
   try {
     // Store the team data to DB
     const newEquipment = await Equipment.create({
+      name: name,
       equipment: equipment,
       equipment_size: equipment_size,
       equipment_type: equipment_type,

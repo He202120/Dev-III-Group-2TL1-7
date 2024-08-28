@@ -147,7 +147,7 @@ const updatePositionFetch = async (userData) => {
 ////////////////////////wilfried//////////////////////
 const fetchtabequipement = async () => {
   try {
-    const timetable = await Equipment.find({}, { equipment: 1, equipment_size: 1, equipment_type: 1, special_Request: 1}); 
+    const timetable = await Equipment.find({}, {name: 1, equipment: 1, equipment_size: 1, equipment_type: 1, special_Request: 1}); 
 
     return timetable;
   } catch (error) {

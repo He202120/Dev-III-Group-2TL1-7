@@ -32,10 +32,11 @@ const EquipmentTable = () => {
 
     const filteredEquipments = equipments.filter(
         (equipment) =>
+            equipment.name?.toLowerCase().includes(searchQuery.toLowerCase()) || // Filtrage par nom
             equipment.equipment.toLowerCase().includes(searchQuery.toLowerCase()) ||
             equipment.equipment_size.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
+    
     const handleDelete = async () => {
         try {
             await deleteEquipment({ userId: equipmentIdToDelete });
@@ -59,7 +60,7 @@ const EquipmentTable = () => {
                         style={{ width: "500px" }}
                         value={searchQuery}
                         type="text"
-                        placeholder="Enter Equipment or Size..."
+                        placeholder="Enter Name, Equipment or Size..."
                         onChange={handleSearch}
                     />
                 </BootstrapForm.Group>
@@ -68,7 +69,7 @@ const EquipmentTable = () => {
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
-                        <th>ID</th> {/* Nouvelle colonne pour l'ID */}
+                        <th>Name</th>
                         <th>Equipment</th>
                         <th>Size</th>
                         <th>Type</th>
@@ -79,7 +80,7 @@ const EquipmentTable = () => {
                 <tbody>
                     {filteredEquipments.map((equipment, index) => (
                         <tr key={equipment._id || index}>
-                            <td>{equipment._id}</td> {/* Affichage de l'ID */}
+                            <td>{equipment.name}</td>
                             <td>{equipment.equipment}</td>
                             <td>{equipment.equipment_size}</td>
                             <td>{equipment.equipment_type}</td>
